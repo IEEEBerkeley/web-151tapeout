@@ -7,27 +7,32 @@ description: Course Info
 
 # Course Info
 
-APE introduces advanced printed circuit board (PCB) design and layout, with a focus on more complex considerations and more nuanced experience with standard tools than the introductory Hands-On PCB Engineering (HOPE) course. It is intended for students with previous PCB design experience (preferably HOPE) and some basic experience with upper division-level circuit design. Students will utilize Altium Designer alongside supporting software and plugins to aid in design and verification of PCBs. Students interested in developing PCBs for class projects, research, or engineering student teams will benefit from this course.
+This project-based course is a follow up to EECS 151: Introduction to Digital Design and Integrated Circuits, where students learn principles, components, and methodologies for large scale digital system design. Students who designed a CPU core in the EECS151 ASIC (application specific integrated circuits) lab integrate their core into a larger System-on-Chip (SoC) using agile hardware design tools such as Chipyard and Chisel, a hardware construction language. While covering the basics of VLSI flows and parameterizable computer architecture, the course focuses on a very hands-on approach and aims to tapeout an SoC utilizing the EECS151 cores by end of semester.
+
+This course spans 13 weeks. Class meets for two hours once a week. Each class begins with a short mini lecture, overview of project status, and check-ins with each team on milestones and obstacles. Students are expected to spend a bit more time each week outside of class time working on their project. There will be a presentation and tapeout poster at the end of the semester - and possibly a SKY130 tapeout.
+
 
 ### Enrolling in APE
 
-Students who are interested in signing up for APE in Spring 2025 should fill out [THIS](https://berkie.ee/ape-sp25-apply?ref=ieee.berkeley.edu) enrollment form.
+Fill out [THIS](https://berkie.ee/eecs151-tapeout-join) form to join! Our DeCal listing from Fall '24 is [https://decal.studentorg.berkeley.edu/courses/7534](https://decal.studentorg.berkeley.edu/courses/7534?ref=ieee.berkeley.edu).
 
-Please email us if you are a concurrent enrollment student- we prioritize matriculated UC Berkeley students. Space permitting, however, concurrent enrollment students are welcome to take APE.
-
-Classes begin week of 1/27.
-
-We offer APE as an in-person class this semester. We have a single pilot section on Thursdays in Cory 125.
 
 ### Prerequisites
 
-At least one upper division course with a circuit design element, such as EE105, EE113A/B, EE140 (240A), EE142, EECS151 (251A), or EE194: Tapeout/Bringup, will provide expected knowledge. HOPE or previous PCB design experience is also highly recommended. If you have completed alternative coursework or have experience please let us know in the application form! Those unsure are welcome to email us (the class is not limited to EECS students!).
+This rigorous course is designed for students who have completed EECS 151 LA ASIC and/or EE 194/290C (the traditional 'Tapeout' and 'Bringup' courses). Students who instead completed EECS 151 LB FPGA are welcome but may have a higher learning curve and will be working with the cores of ASIC students. Students who have not completed EECS 151 or Tapeout/Bringup are recommended to take this Decal after having completed the course. Those unsure are welcome to email us. We are extremely welcoming to self-motivated students of various backgrounds but do wish to emphasize that background knowledge will be helpful, especially as this is the first iteration of the course.
 
+### Grading
+
+bCourses will be available. We will keep track of grade-related things mostly in Gradescope. Other course content will be found here on the website and on Github. When in doubt, ask on the Discord: [https://discord.gg/DXbg598wcR](https://discord.gg/DXbg598wcR)
+
+[COMPLETE SYLLABUS HERE](https://docs.google.com/document/d/1DEXQRc794Aa0wZw8qFCZeJu_mh7d84gBi-DDQVRr5Ls/edit?usp=sharing&ref=ieee.berkeley.edu)
 
 ### Office Hours
 
-For students that need extra support time, we will hold staff office hours at the Supernode (Cory 246). Check [HERE](https://calendar.google.com/calendar/u/1?cid=Y19zNHVpbDdwa2d0NXZnYTRtNzAwYTVuaWRuNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&ref=ieee.studentorg.berkeley.edu) for availability.
+We may have work and "office hours" sessions. You can also organize your own work sessions. We will use this calendar to track them.
+
+Class calendar: [http://berkie.ee/tapeoutcalendar](http://berkie.ee/tapeoutcalendar)
 
 ### Contact
 
-Please email us at [ieee-ape@lists.berkeley.edu](ieee-ape@lists.berkeley.edu)
+Please email us at [151-tapeout-decal@lists.berkeley.edu](151-tapeout-decal@lists.berkeley.edu)
