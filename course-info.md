@@ -7,28 +7,22 @@ description: Course Info
 
 # Course Info
 
-Through HOPE, you will learn effective printed circuit board (PCB) design and develop the skills to build custom electronics for classes, personal projects, student teams, and more. You will learn effective system, schematic, and layout design for PCBs through hands-on labs and experience basic PCB assembly and bringup. You will also be exposed to some advanced PCB design topics such as DFx, signal and power integrity, grounding, and thermals. At the end of the semester, you will combine all of your skills in a student design project.
+APE introduces advanced printed circuit board (PCB) design and layout, with a focus on more complex considerations and more nuanced experience with standard tools than the introductory Hands-On PCB Engineering (HOPE) course. It is intended for students with previous PCB design experience (preferably HOPE) and some basic experience with upper division-level circuit design. Students will utilize Altium Designer alongside supporting software and plugins to aid in design and verification of PCBs. Students interested in developing PCBs for class projects, research, or engineering student teams will benefit from this course.
 
-### Enrolling in HOPE
+### Enrolling in APE
 
-Students who are interested in signing up for HOPE in Spring 2025 should fill out [THIS](https://berkie.ee/hope-sp25-apply) enrollment form to recieve a permission code (they will be distributed in batches, first come first serve). Our DeCal listing for Fall '24 was [https://decal.berkeley.edu/courses/7583](https://decal.berkeley.edu/courses/7583).
+Students who are interested in signing up for APE in Spring 2025 should fill out [THIS](https://berkie.ee/ape-sp25-apply?ref=ieee.berkeley.edu) enrollment form.
 
-Please email us if you are a concurrent enrollment student- we prioritize matriculated UC Berkeley students. Space permitting, however, concurrent enrollment students are welcome to take HOPE.
+Please email us if you are a concurrent enrollment student- we prioritize matriculated UC Berkeley students. Space permitting, however, concurrent enrollment students are welcome to take APE.
 
-Classes begin week of 1/26.
+Classes begin week of 1/27.
 
-We offer HOPE as an in-person class this semester. We plan to hold two identical sections of class each week (Wed and Thurs), and you can choose which section to enroll in.
+We offer APE as an in-person class this semester. We have a single pilot section on Thursdays in Cory 125.
 
 ### Prerequisites
 
-HOPE is not a class about circuits. We expect students to have a basic understanding of circuits. We heavily recommend students satisfy our pre-reqs of EE 16B or ME 100, or otherwise have a similar level of knowledge in circuits (e.g. PHYSICS 7B, BIOE 105).
+At least one upper division course with a circuit design element, such as EE105, EE113A/B, EE140 (240A), EE142, EECS151 (251A), or EE194: Tapeout/Bringup, will provide expected knowledge. HOPE or previous PCB design experience is also highly recommended. If you have completed alternative coursework or have experience please let us know in the application form! Those unsure are welcome to email us (the class is not limited to EECS students!).
 
-
-## Grading
-
-Your grade is primarily based on completion of labs and assignments. The final project is graded both on completion and demonstration of concepts taught in the course. Students need 70% to pass.
-
-See bCourses for detailed [grading breakdown](https://bcourses.berkeley.edu/courses/1541379/pages/grading-breakdown). We will keep track of grade-related things in bCourses. Other course content will be found here on the website.
 
 ### Office Hours
 
@@ -36,8 +30,4 @@ For students that need extra support time, we will hold staff office hours at th
 
 ### Contact
 
-Please email us at [hope@ieee.berkeley.edu](hope@ieee.berkeley.edu)
-
-### Project Showcases
-
-[Fall 2024 Showcase](https://sites.google.com/berkeley.edu/hope-fall-24-showcasesp24)
+Please email us at [ieee-ape@lists.berkeley.edu](ieee-ape@lists.berkeley.edu)
