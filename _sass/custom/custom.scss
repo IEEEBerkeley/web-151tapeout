@@ -1,0 +1,277 @@
+// Just the Class dependencies
+@import 'card';
+
+// Just the Class styles
+@import 'announcement';
+@import 'module';
+@import 'schedule';
+@import 'staffer';
+
+// // Overrides
+// code {
+//   font-size: 14px;
+//   padding: 0.2em 0.4em;
+//   border: none;
+// }
+
+// iframe {
+//   max-width: 100%;
+// }
+
+// details {
+//   @extend .mb-4;
+// }
+
+// summary {
+//   @extend .btn, .btn-outline;
+
+//   width: 100%;
+// }
+
+// .main-content {
+//   dl {
+//     display: block;
+//     grid-template-columns: none;
+//   }
+
+//   dt {
+//     font-weight: 700;
+//     text-align: start;
+
+//     &::after {
+//       content: normal;
+//     }
+//   }
+
+//   dd {
+//     font-weight: normal;
+
+//     + dt {
+//       margin-top: 1em;
+//     }
+//   }
+// }
+
+
+.algorithm p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.algorithm blockquote {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+span code {
+  color: var(--blue-color);
+  color: var(--green-color);
+  color: var(--red-color);
+}
+
+code span[style*="color: blue"] {
+  color: var(--blue-color) !important;
+}
+
+code[style*="color: blue"] {
+  color: var(--blue-color) !important;
+}
+
+code span[style*="color: green"] {
+  color: var(--green-color) !important;
+}
+
+code[style*="color: green"] {
+  color: var(--green-color) !important;
+}
+
+code span[style*="color: red"] {
+  color: var(--red-color) !important;
+}
+
+code[style*="color: red"] {
+  color: var(--red-color) !important;
+}
+
+
+// No right navigation if width is less than content-width
+@media (max-width: $content-width) {
+  .content-nav {
+    display: none;
+  }
+}
+
+// Begin UCB header fixes
+
+// If width of display is less than content-width, header is invisible
+// so no extra CSS is needed
+
+// If width of display is at least content width:
+@media (min-width: $content-width) {
+  .main-header {
+    position: fixed; // Sticky header (stays on top as you scroll)
+    top: 0; // Forces header on top of page
+    z-index: 1000; // Forces header drawn on top of everything else
+  }
+
+  // Forces site title in sidebar to be flush with header
+  .side-bar {
+    top: 0;
+    left: 0;
+  }
+
+  // Add whitespace between header and start of content (site title, logo)
+  .main-content-wrap {
+    margin-top: 60px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    scroll-margin-top: 60px;
+  }
+
+  // Make the site title in the sidebar smaller
+  .site-title {
+    font-size: 19px !important;
+  }
+
+  // Header width should be all of display, minus sidebar
+  // Seems like JTD fixes sidebar to 15.5rem in this layout (might be wrong tho)
+  .main-header {
+    width: calc(100% - 15.5rem);
+  }
+
+  // Begin Right nav scroll
+  .page {
+    display: flex;
+    flex-direction: row-reverse; // put nav on right
+    justify-content: flex-end;
+  }
+
+  .content {
+    max-width: 75%
+  }
+
+  .content-nav {
+    margin: 0 0 2rem;
+    padding: 0;
+    position: sticky;
+    float: right;
+    top: 6em;
+    flex: 0 0 25%;
+    max-width: 25%;
+    max-height: calc(100vh - 2em);
+    height: 100%;
+    overflow-y: auto;
+    font-size: 0.9em;
+    line-height: 1.8;
+
+    .nav-list-link {
+      text-decoration: none;
+      padding-right: 1em !important;
+      line-height: 1.4rem !important;
+    }
+
+    .nav-list .nav-list-item .nav-list-link {
+      min-height: 1.8rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 15px;
+      list-style: none;
+      list-style-type: none;
+
+      li::before {
+        display: none;
+      }
+
+      ul {
+        border-left: none;
+      }
+    }
+  }
+
+  // End Right Nav scroll
+}
+
+@media print {
+  .content-nav {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .main {
+    margin: 0 !important;
+    max-width: 100%;
+  }
+}
+
+// If width of display is at least content+nav width
+// (i.e. whitespace on either side of site):
+@media (min-width: $content-width + $nav-width) {
+
+  // Set default site title in sidebar font size
+  .site-title {
+    font-size: 24px !important;
+  }
+
+  // Header should match content width (e.g. in wider.scss)
+  .main-header {
+    width: $content-width;
+  }
+}
+
+.content-nav .nav-list .nav-list-item .nav-list-link {
+  padding-top: 0.7rem !important;
+  padding-bottom: 0.7rem !important;
+  text-decoration: none;
+}
+
+@media (max-width: $content-width) {
+  .content-nav {
+    display: none;
+  }
+}
+
+.nav-list .nav-list-item .nav-list-link {
+  padding-top: 0.65rem !important;
+  padding-bottom: 0.65rem !important;
+  text-decoration: none;
+}
+
+.nav-list-expander .btn-reset,
+.nav-list .nav-list-item .nav-list-expander {
+  padding: 0.85rem !important;
+  min-height: 2.75rem !important;
+  min-width: 2.75rem !important;
+}
+
+td a,
+li a,
+.padded-link {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  text-decoration: none;
+  min-width: 2.75rem !important;
+  min-height: 2.75rem !important;
+}
+
+h2.text-delta+ul a,
+#markdown-toc a {
+  padding: 0.75rem !important;
+  text-decoration: none;
+}
+
+.anchor-heading {
+  padding: 0.85rem !important;
+  min-height: 2.75rem !important;
+  min-width: 2.75rem !important;
+  margin-left: -0.6rem !important;
+  margin-top: -0.7rem !important;
+}
