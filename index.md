@@ -1,14 +1,14 @@
 ---
 layout: fullwidth
-title: Hands-On PCB Engineering (HOPE)
+title: Advanced PCB Engineering (APE)
 nav_exclude: true
 permalink: /:path/
 seo:
   type: Course
-  name: Berkeley IEEE HOPE
+  name: Berkeley IEEE APE
 ---
 
-# Hands-On PCB Engineering (HOPE)
+# Advanced PCB Engineering (APE)
 {:.no_toc}
 
 **Lecture:** 8-10PM TuTh, Cory 125\
