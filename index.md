@@ -1,19 +1,17 @@
 ---
 layout: fullwidth
-title: Advanced PCB Engineering (APE)
+title: EECS151 Tapeout (151T)
 nav_exclude: true
 permalink: /:path/
 seo:
   type: Course
-  name: Berkeley IEEE APE
+  name: Berkeley IEEE Tapeout
 ---
 
-# Advanced PCB Engineering (APE)
+# EECS151 Tapeout (151T)
 {:.no_toc}
 
-**Lecture:** 8-10PM TuTh, Cory 125\
-[Lab Checkoff Form](https://forms.gle/9t4jXXqQexWVYMTw5?ref=ieee.berkeley.edu)
-[Lab Resources](https://drive.google.com/drive/folders/1p97kdv7-6Jbum-YiwUoHo9PsbTBzvS1a?usp=sharing&ref=ieee.berkeley.edu)
+**Lecture:** TBD
 
 <table id="timeline" style="line-height: normal;">
     <tbody><tr>
