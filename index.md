@@ -8,7 +8,7 @@ seo:
   name: Berkeley IEEE EECS151 Tapeout
 ---
 
-# EECS151 Tapeout (151T, or "The Tapeout Decal")
+# EECS151 Tapeout (aka. 151T, aka "The Tapeout Decal")
 # This site is under construction! Pardon our dust... :3
 {:.no_toc}
 
