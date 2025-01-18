@@ -12,7 +12,7 @@ This project-based course is a follow up to EECS 151: Introduction to Digital De
 This course spans 13 weeks. Class meets for two hours once a week. Each class begins with a short mini lecture, overview of project status, and check-ins with each team on milestones and obstacles. Students are expected to spend a bit more time each week outside of class time working on their project. There will be a presentation and tapeout poster at the end of the semester - and possibly a SKY130 tapeout.
 
 
-### Enrolling in APE
+### Enrolling in EECS151T
 
 Fill out [THIS](https://berkie.ee/eecs151-tapeout-join) form to join! Our DeCal listing from Fall '24 is [https://decal.studentorg.berkeley.edu/courses/7534](https://decal.studentorg.berkeley.edu/courses/7534?ref=ieee.berkeley.edu).
 
@@ -35,4 +35,4 @@ Class calendar: [http://berkie.ee/tapeoutcalendar](http://berkie.ee/tapeoutcalen
 
 ### Contact
 
-Please email us at [151-tapeout-decal@lists.berkeley.edu](151-tapeout-decal@lists.berkeley.edu)
+Please email us at [151tapeout@ieee.berkeley.edu](151tapeout@ieee.berkeley.edu)

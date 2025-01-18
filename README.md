@@ -1,3 +1,3 @@
 # HOPE WEBSITE
 
-init
+meow :3

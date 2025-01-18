@@ -5,14 +5,14 @@ nav_exclude: true
 permalink: /:path/
 seo:
   type: Course
-  name: Berkeley IEEE Tapeout
+  name: Berkeley IEEE EECS151 Tapeout
 ---
 
-# EECS151 Tapeout (151T)
-{:.no_toc}
+# EECS151 Tapeout (151T, or "The Tapeout Decal")
 # This site is under construction! Pardon our dust... :3
+{:.no_toc}
 
-**Lecture:** TBD
+**Lecture:** Mondays 3-5pm in [BWRC](https://www.google.com/search?q=berkeley+wireless+research+center). Ring the doorbell to be let in!
 
 <table id="timeline" style="line-height: normal;">
     <tbody><tr>
