@@ -36,9 +36,7 @@ seo:
     </td>
     
     <td>
-        <ul>
-        	<li><a href="https://docs.google.com/presentation/d/17EZHSikttTKo7_Xsz5Yw4EF8fxDJNSufTBSaCra8w3Q/edit?usp=sharing">Slides</a>
-        </ul>
+        	<a href="https://docs.google.com/presentation/d/17EZHSikttTKo7_Xsz5Yw4EF8fxDJNSufTBSaCra8w3Q/edit?usp=sharing">Slides</a>
     </td>
     
     <td class="lab">
@@ -52,7 +50,6 @@ seo:
     </td>
     <td>
         Begin group formation / project ideation
-        <br>
     </td>
 <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
