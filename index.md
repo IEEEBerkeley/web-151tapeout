@@ -10,6 +10,7 @@ seo:
 
 # EECS151 Tapeout (151T)
 {:.no_toc}
+# This site is under construction! Pardon our dust... :3
 
 **Lecture:** TBD
 
