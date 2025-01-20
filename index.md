@@ -9,7 +9,7 @@ seo:
 ---
 
 # EECS151 Tapeout (aka 151T, aka "The Tapeout Decal")
-# This site is under construction! Pardon our dust... :3 Enroll [here](berkie.ee/151t-sp25)!
+# This site is under construction! Pardon our dust... :3 Enroll [here](https://berkie.ee/151t-sp25)!
 {:.no_toc}
 
 **Lecture:** Mondays 3-5pm in [BWRC](https://www.google.com/search?q=berkeley+wireless+research+center). Ring the doorbell to be let in!
