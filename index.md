@@ -9,10 +9,22 @@ seo:
 ---
 
 # EECS151 Tapeout (aka 151T, aka "The Tapeout Decal")
-# This site is under construction! Pardon our dust... :3 Enroll [here](https://berkie.ee/151t-sp25)!
-{:.no_toc}
+
+EECS151 Tapeout is a Decal (student-run course) giving a hands-on, end-to-end experience in SoC design and implementation culminating in a [tapeout](https://en.wikipedia.org/wiki/Tape-out). Learn more on the Course Info tab!
+
+[After Feb 3, email us] **Enroll** for Spring 2025 [here](https://berkie.ee/151t-sp25)! 
 
 **Lecture:** Mondays 3-5pm in [BWRC](https://www.google.com/search?q=berkeley+wireless+research+center). Ring the doorbell to be let in!
+
+You will find labs and project repositories on our [Github](https://github.com/ucb-eecs151tapeout).
+
+When in doubt, ask on the Discord: [berkie.ee/151t-discord](https://berkie.ee/151t-discord).
+
+You can also email us at [151tapeout@ieee.berkeley.edu](151tapeout@ieee.berkeley.edu).
+
+And don't forget to have fun! :3
+
+- Lucy & Elam, your 2024-2025 staff
 
 # Schedule
 
