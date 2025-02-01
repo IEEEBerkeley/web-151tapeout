@@ -343,6 +343,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <td>
         </td>
         <!-- Lab -->
+        <td>
         </td>
         <!-- Lab Due -->
         <td>
