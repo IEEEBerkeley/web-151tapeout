@@ -194,6 +194,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <td style="text-align: left;"> 
             <b>SoC Verification </b><br><br>
             Learn what it means to “verify” an SoC, with Rocket Chip as an example, in research and industry.
+            Figure out how to scope your project to match your pace.
         </td>
         <!-- Reference -->
         <td>
@@ -206,7 +207,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         </td>
         <!-- Lab Due -->
         <td>
-            In two weeks _but if you are taking a slower pace through the labs (which is completely fine!), we may discourage you from also pursuing a side project._
+            In two weeks.
         </td>
         <!-- Project Deliverable -->
         <td>
