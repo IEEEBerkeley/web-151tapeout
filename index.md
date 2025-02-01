@@ -52,7 +52,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Topic -->
         <td style="text-align: left;"> 
             <b>Sign up for the Decal! </b><br><br>
-            To avoid dead links, see the forms above. Note we start a week later than standard classes. 
+            To avoid dead links, see the forms above. We start a week later than standard classes. 
         </td>
         <!-- Reference -->
         <td>
@@ -86,12 +86,12 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Lab -->
         <td class="lab">
             <a href="https://github.com/ucb-eecs151tapeout/eecs151t-labs/"> Labs 0, 1A, 1B</a><br><br>
-            - Practical introduction to Git and Chisel.
-            - Test instructional account and Chipyard setup.
+            Practical introduction to Git and Chisel.
+            Test instructional account and Chipyard setup.
         </td>
         <!-- Lab Due -->
         <td>
-            Due in two weeks, but the next lab will be released next week.
+            In two weeks.
         </td>
         <!-- Project Deliverable -->
         <td>
@@ -108,7 +108,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Topic -->
         <td style="text-align: left;"> 
             <b>Introduction to SoCs and their Parts + Chipyard </b><br><br>
-            Theoretical introduction to SoCs and their various parts using Berkeley’s Rocket Chip - an SoC generator.
+            Introduction to SoCs and their various parts using Berkeley’s Rocket Chip - an SoC generator.
         </td>
         <!-- Reference -->
         <td>
@@ -117,12 +117,11 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Lab -->
         <td class="lab">
             <a href="https://github.com/ucb-eecs151tapeout/eecs151t-labs/"> Lab 2 (A, B, C, optional: X)</a><br><br>
-            - A practical introduction to Chipyard and how to navigate complex unknowns.. 
-            - A guided step by step integration of EECS151 RISC-V core.
+            Practical Chipyard intro. Step by step integration of EECS151 RISC-V core.
         </td>
         <!-- Lab Due -->
         <td>
-            Due in two weeks - next week is a holiday!
+            In two weeks.
         </td>
         <!-- Project Deliverable -->
         <td>
@@ -164,7 +163,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Topic -->
         <td style="text-align: left;"> 
             <b>SoC Interconnects, Protocols, and More Chipyard </b><br><br>
-            Adding on to existing learnings about SoC components, figure out how those parts are interconnected. Learn more about what that looks like in Chipyard (TileLink, Configs, and hierarchies..)
+            Figure out how SoC parts are interconnected and what that looks like in Chipyard (TileLink, Configs..).
         </td>
         <!-- Reference -->
         <td>
@@ -173,15 +172,15 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Lab -->
         <td class="lab">
             <a href="https://github.com/ucb-eecs151tapeout/eecs151t-labs/"> Lab 3</a><br><br>
-            - Get more practical experience with Chipyard to motivate the process for starting your own side projects.
+            Chipyard exploration to motivate starting own side projects.
         </td>
         <!-- Lab Due -->
         <td>
-            Due in two weeks, but the next lab will be released next week.
+            In two weeks.
         </td>
         <!-- Project Deliverable -->
         <td>
-            Start evaluating your personal status and forming (or not) teams for side projects. Decide by next week if you want to do a side project or not - form groups by next week, or be ready to do so in class, by end of the class.
+            Evaluate your status and form teams by next week. Decide if want to do a side project.
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
@@ -194,7 +193,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Topic -->
         <td style="text-align: left;"> 
             <b>SoC Verification </b><br><br>
-            Learn what it means to “verify” an SoC, with Rocket Chip as an example, both the "industry" and "academy" ways. 
+            Learn what it means to “verify” an SoC, with Rocket Chip as an example, in research and industry.
         </td>
         <!-- Reference -->
         <td>
@@ -203,15 +202,15 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Lab -->
         <td class="lab">
             <a href="https://github.com/ucb-eecs151tapeout/eecs151t-labs/"> Lab 4</a><br><br>
-            - Get practical experience “verifying” your OFO Tile and apply that to any side projects. 
+            Practical experience verifying OFO Tile and side project.
         </td>
         <!-- Lab Due -->
         <td>
-            Due in two weeks, but if you are taking a slower pace through the labs (which is completely fine!), we may discourage you from also pursuing a side project.
+            In two weeks _but if you are taking a slower pace through the labs (which is completely fine!), we may discourage you from also pursuing a side project._
         </td>
         <!-- Project Deliverable -->
         <td>
-            If OFO Tile works, work on your side project - submit by next week a proposal and timeline, keeping in mind **RTL Freeze** right after spring break.
+            If OFO Tile works, work on side project - submit by next week a proposal and timeline.
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
@@ -235,7 +234,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         </td>
         <!-- Lab Due -->
         <td>
-            Catch up on outstanding work - get your repository "PD ready" - and get ready for presentations next week. 
+            Catch up on outstanding work. Get "PD ready". Presentations next week. 
         </td>
         <!-- Project Deliverable -->
         <td>
@@ -263,11 +262,11 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         </td>
         <!-- Lab Due -->
         <td>
-            If stuck on OFOT Tile, work on that. By RTL freeze should be confident in the functionality of the system.
+            OFO Tile option - by RTL freeze should be confident in the functionality of the system.
         </td>
         <!-- Project Deliverable -->
         <td>
-             If doing a side project, work on that. By RTL freeze should be confident in the functionality of the system.
+             Side project option - by RTL freeze should be confident in the functionality of the system.
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
@@ -280,7 +279,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Topic -->
         <td style="text-align: left;"> 
             <b>Spring Break -> **RTL FREEZE**</b><br><br>
-            The big RTL & verification rush!
+            The big RTL & verification rush! **RTL FREEZE is Sunday 3/30, end of spring break (or realistically - Monday 3pm 3/31).**
         </td>
         <!-- Reference -->
         <td>
@@ -293,7 +292,6 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         </td>
         <!-- Project Deliverable -->
         <td>
-        **RTL FREEZE is Sunday 3/30, end of spring break (or realistically - Monday 3pm 3/31).**
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
@@ -315,16 +313,15 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Lab -->
         <td class="lab">
             <a href="https://github.com/ucb-eecs151tapeout/eecs151t-labs/"> Lab 5</a><br><br>
-            - Get practical experience running PD.
-            - Get preliminary numbers for your project.
+            Practical experience running PD. Preliminary numbers for projects.
         </td>
         <!-- Lab Due -->
         <td>
-            Lab segment due in a week.
+            In a week.
         </td>
         <!-- Project Deliverable -->
         <td>
-            Whole projects (be it OFOT Tile or side) due in two weeks! That means DRC/LVS-clean GDS.
+            DRC/LVS-clean GDS in two weeks!
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
@@ -337,7 +334,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Topic -->
         <td style="text-align: left;"> 
             <b>**TAPEOUT DEADLINE** </b><br><br>
-            ..BE DONE BE DONE BE DONE..
+             Whatever it takes to be "done" - that means DRC/LVS-clean GDS.
         </td>
         <!-- Reference -->
         <td>
@@ -350,7 +347,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         </td>
         <!-- Project Deliverable -->
         <td>
-            Whatever it takes to be "done" - that means DRC/LVS-clean GDS.
+            ..BE DONE BE DONE BE DONE..
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
@@ -403,7 +400,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         </td>
         <!-- Project Deliverable -->
         <td>
-            Document what you've done! And final feedback form.
+            Document what you've done! Final feedback form.
         </td>
     <!--kg-card-end: html--><!--kg-card-begin: html-->
     </tr>
