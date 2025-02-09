@@ -133,7 +133,7 @@ Note that this schedule is subject to change. All updates will be posted on Disc
         <!-- Week -->
         <td class="week">
             <strong>3</strong> <br> 
-            2/3
+            2/17
         </td>
         <!-- Topic -->
         <td style="text-align: left;"> 
