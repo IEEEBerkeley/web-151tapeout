@@ -14,7 +14,7 @@ EECS151 Tapeout is a Decal (student-run course) giving a hands-on, end-to-end ex
 
 - [After Feb 3, email us] **Enroll** for Spring 2025 [here](https://berkie.ee/151t-sp25)! 
 
-- **Lecture:** Mondays 3-5pm in [BWRC](https://www.google.com/search?q=berkeley+wireless+research+center). Ring the doorbell to be let in!
+- **Lecture:** Mondays 3-5pm in [BWRC](https://www.google.com/search?q=berkeley+wireless+research+center). Ring the doorbell to be let in! We will meet in the big central room.
 
 - You will find labs and project repositories on our [Github](https://github.com/ucb-eecs151tapeout).
 
