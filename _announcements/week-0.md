@@ -1,8 +1,10 @@
 ---
-title: Week 0 Announcement
+layout: announcement
+title: Week 0 Announcements
 week: 0
-date: 2019-04-01
+date: 2025-08-22
 ---
 
-Hello world!
-{: .fs-5 }
+- **Enroll** for Fall 2025 [here](http://berkie.ee/bhjq05)!
+- The first lecture is on Friday, September 12.
+- Please get your pancake orders submitted before breakfast.
