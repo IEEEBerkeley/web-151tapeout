@@ -11,8 +11,9 @@ This course spans 13 weeks. Class meets for two hours once a week. Each class wi
 [//]: <> (meow :3)
 [//]: <> (MEOW >:3)
 
-<!--
-# CS 161 Template Website
+This website was made with the CS 161 Template Website: [![The Latest Version]](https://github.com/cs161-staff/course-site-template)
+
+<!-- # CS 161 Template Website
 
 ![Your Repository's Version - v1.1](https://img.shields.io/badge/Version-v1.1-blue?style=flat)
 [![The Latest Version]](https://github.com/cs161-staff/course-site-template)
@@ -24,7 +25,6 @@ The template is built on Just the Docs (https://just-the-docs.com), so check out
 
 The tags at the top of this document represent information about the template version. **You should not change this unless you are maintaining the template.** The left tag represents the version of the template that you cloned, and the right tag represents the latest version of the template. If your repository version does not match the latest version, you should return to the template again next semester.
 
-<!------------------>
 [The Latest Version]: https://img.shields.io/github/v/release/cs161-staff/course-site-template?sort=date&display_name=release&label=Latest
 
 ## Creating Repo
@@ -626,6 +626,4 @@ labs:
 - If you need this repeatedly (e.g. there's two lectures on every day), then change `day_rowspan` in `syllabus.yml`. Note that all the other rowspans must now be calculated relative to your updated `day_rowspan`.
 - Example of `day_rowspan` usage: Suppose you have two lectures on each of MWF, and two discussions per week. Then you want `day_rowspan: 2` and `default_lecture_rowspan: 1` so that two lectures get rendered per day. Since a week now spans 6 rows, you want `discussion_default_rowspan: 3` so that two discussions are rendered per week.
 - More generally, if you change `day_rowspan` to `n`, then you want to multiply every other `default_rowspan` by `n` to get the original table unchanged. But now you can get multiple rows per day by setting some rowspans to be less than `n`.
-- The `day_rowspan` feature can be confusing so we don't recommend using it unless you know what you're doing.
-
--->
+- The `day_rowspan` feature can be confusing so we don't recommend using it unless you know what you're doing. -->
