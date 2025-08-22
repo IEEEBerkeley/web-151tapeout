@@ -55,10 +55,10 @@
         <th style="width:{{ site.data.syllabus.date_width }}">Date</th>
         <th style="width:{{ site.data.syllabus.lecture_width }}">Lecture</th>
         {% comment %}<th style="width:{{ site.data.syllabus.readings_width }}">Readings</th>{% endcomment %}
-        <th style="width:{{ site.data.syllabus.discussion_width }}">Discussion</th>
-        {% comment %}<th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>{% endcomment %}
-        <th style="width:{{ site.data.syllabus.homework_width }}">HW</th>
-        <th style="width:{{ site.data.syllabus.project_width }}">Project</th>
+        <!-- <th style="width:{{ site.data.syllabus.discussion_width }}">Labs</th> -->
+        <th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>
+        <!-- <th style="width:{{ site.data.syllabus.homework_width }}">Lab Due</th> -->
+        <th style="width:{{ site.data.syllabus.project_width }}">Project Deliverable</th>
       </tr>
     </thead>
 
@@ -343,6 +343,7 @@
                 - For simplicity, the code for each column should be kept identical (only
                 swapping out the column names.
               {%- endcomment -%}
+              {%- comment -%}
               {%- if discussion_rowspan == 0 -%}
                 {%- assign discussion_element = site.data.discussions.discussions[discussion_index] -%}
                 {%- if discussion_element.rowspan -%}
@@ -363,6 +364,7 @@
               {%- else -%}
                 {%- assign discussion_rowspan = discussion_rowspan | plus: -1 -%}
               {%- endif -%}
+              {%- endcomment -%}
 
               {%- comment -%}
                 - Render the lab column.
@@ -371,7 +373,7 @@
                 - This is commented out because the template defaults to not using labs.
                 If your class has labs, uncomment.
               {%- endcomment -%}
-              {%- comment -%}
+              
                 {%- if lab_rowspan == 0 -%}
                 {%- assign lab_element = site.data.labs.labs[lab_index] -%}
                 {%- if lab_element.rowspan -%}
@@ -392,13 +394,14 @@
                 {%- else -%}
                 {%- assign lab_rowspan = lab_rowspan | plus:-1 -%}
                 {%- endif -%}
-              {%- endcomment -%}
+              
 
               {%- comment -%}
                 - Render the homework column.
                 - For simplicity, the code for each column should be kept identical (only
                 swapping out the column names.
               {%- endcomment -%}
+              {%- comment -%}
               {%- if homework_rowspan == 0 -%}
                 {%- assign homework_element = site.data.homeworks.homeworks[homework_index] -%}
                 {%- if homework_element.rowspan -%}
@@ -419,6 +422,7 @@
               {%- else -%}
                 {%- assign homework_rowspan = homework_rowspan | plus: -1 -%}
               {%- endif -%}
+              {%- endcomment -%}
 
               {%- comment -%}
                 - Render the project column.

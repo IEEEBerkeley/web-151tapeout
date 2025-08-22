@@ -83,53 +83,91 @@ lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 readings_prefix: "/assets/notes/cs101-sp25-note"
 
 lectures:
-  - title: "Introduction and Security Principles"
-    slides: "https://docs.google.com/presentation/d/18fP58xbaJQAKTzf3p1pW06lSWkT0umdlQCQuRwzsIhQ"
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9eGdDJv1UIYuMs0oYJ5DCa"
-    readings:
-      - name: "Ch. 1"
-        link: "https://textbook.cs161.org/principles/principles.html"
-  - title: "x86 Assembly and Call Stack"
-    slides: "" # example of lecture slides automatically linking to a PDF file instead of Google Slides
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_R0dlFGLnAxOEJtWXahfdN"
-    rowspan: 2
-    readings:
-      - name: "Ch. 2"
-        link: "https://textbook.cs161.org/memory-safety/x86.html"
-      - name: "x86/GDB Cheat Sheet"
-        link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
-  - title: "Memory Safety Vulnerabilities"
-    slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
-    readings:
-      - name: "Ch. 3"
-        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
-  - title: "Holiday (No Lecture)"
-    nonumber: true # skips assigning a number to this box
-  - title: "Memory Safety Vulnerabilities 2"
-    slides: "https://docs.google.com/presentation/d/140pgaTQT-7HgqP9Y7NLHXIlFeJHNInLauVaqFn455yI"
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX-g5R_j2HkJBohgyIkppSCl"
-    readings:
-      - name: "Ch. 3"
-        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
-    extra: "[Sample extra link](https://google.com)"
-  - title: "Midterm (7–9pm)"
-    nonumber: true # skips assigning a number to this box
-  - title: "Optional Lecture"
-    slides: "https://docs.google.com/presentation/d/1gYzYu-T0ymaVcH87-mlCPc7qnRmWacHpKebCentDjoM"
+  - title: "Sign up for the Decal! To avoid dead links, see the forms above. We start a week later than standard classes."
+    # slides: "https://docs.google.com/presentation/d/18fP58xbaJQAKTzf3p1pW06lSWkT0umdlQCQuRwzsIhQ"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9eGdDJv1UIYuMs0oYJ5DCa"
+    # readings:
+    #   - name: "Ch. 1"
+    #     link: "https://textbook.cs161.org/principles/principles.html"
+  - title: "What does it mean to tapeout a chip? Intro to the class, tapeouts, and the flow needed to get there!"
+    # slides: "" # example of lecture slides automatically linking to a PDF file instead of Google Slides
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_R0dlFGLnAxOEJtWXahfdN"
+    # rowspan: 2
+    # readings:
+    #   - name: "Ch. 2"
+    #     link: "https://textbook.cs161.org/memory-safety/x86.html"
+    #   - name: "x86/GDB Cheat Sheet"
+    #     link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
+  - title: "Introduction to SoCs and their Parts + Chipyard. Introduction to SoCs and their various parts using Berkeley’s Rocket Chip - an SoC generator."
+    # slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
+    # readings:
+    #   - name: "Ch. 3"
+    #     link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+  # - title: "Holiday (No Lecture)"
+    # nonumber: true # skips assigning a number to this box
+  - title: "SoC Interconnects, Protocols, and More Chipyard. Figure out how SoC parts are interconnected and what that looks like in Chipyard (TileLink, Configs..)."
+    # slides: "https://docs.google.com/presentation/d/140pgaTQT-7HgqP9Y7NLHXIlFeJHNInLauVaqFn455yI"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX-g5R_j2HkJBohgyIkppSCl"
+    # readings:
+    #   - name: "Ch. 3"
+    #     link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+    # extra: "[Sample extra link](https://google.com)"
+  - title: "SoC Peripherals"
+    # nonumber: true # skips assigning a number to this box
+  - title: "Surprise! (Stay tuned~) :3"
+  - title: "Midterm Student Presentations. Make sure we’re _all_ on the same page regarding who’s aiming to do what before RTL Freeze."
+    # slides: "https://docs.google.com/presentation/d/1gYzYu-T0ymaVcH87-mlCPc7qnRmWacHpKebCentDjoM"
     classes:
       - schedule-red
-  - title: "Mitigating Memory Safety Vulnerabilities"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm"
-    slides: "https://docs.google.com/presentation/d/1ZONpx6qlqR2GyIF2nL3zjuDiOVknApgFOVwMHagmskI"
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_clJKxwAxzStm4ctkNDXvt"
-    readings:
-      - name: "Ch. 4"
-        link: "https://textbook.cs161.org/memory-safety/mitigations.html"
-  - title: "Intro to Cryptography"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
-    slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
-    readings:
-      - name: "Ch. 5"
-        link: "https://textbook.cs161.org/crypto/intro.html"
+  - title: "**RTL FREEZE** The big RTL & verification rush!"
+    # video: "https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm"
+    # slides: "https://docs.google.com/presentation/d/1ZONpx6qlqR2GyIF2nL3zjuDiOVknApgFOVwMHagmskI"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_clJKxwAxzStm4ctkNDXvt"
+    # readings:
+    #   - name: "Ch. 4"
+    #     link: "https://textbook.cs161.org/memory-safety/mitigations.html"
+  - title: "SoC Verification"
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # readings:
+    #   - name: "Ch. 5"
+    #     link: "https://textbook.cs161.org/crypto/intro.html"
+  - title: "An Introduction to Physical Design"
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # readings:
+    #   - name: "Ch. 5"
+    #     link: "https://textbook.cs161.org/crypto/intro.html"
+  - title: "Physical Design Applied: *.tcl Tour"
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # readings:
+    #   - name: "Ch. 5"
+    #     link: "https://textbook.cs161.org/crypto/intro.html"
+  - title: "Final Student Presentations / Design Review"
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # readings:
+    #   - name: "Ch. 5"
+    #     link: "https://textbook.cs161.org/crypto/intro.html"
+  - title: "Tapeout Deadline!!!!! TODO: FIX DATES"
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # readings:
+    #   - name: "Ch. 5"
+    #     link: "https://textbook.cs161.org/crypto/intro.html"
+    classes:
+      - schedule-red
+  - title: "Thanksgiving Break - No Meet"
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # readings:
+    #   - name: "Ch. 5"
+    #     link: "https://textbook.cs161.org/crypto/intro.html"
