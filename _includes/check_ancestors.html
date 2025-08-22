@@ -1,0 +1,219 @@
+{%- comment -%}
+  - This is a very cursed file.
+  - In this file, we look up all ancestor pages of the current page. Then, we look in
+    the front matter of each ancestor page to see if any ancestor page's front matter has
+    "hide_content: true". We also see if any ancestor's page front matter has
+    "unreleased_warning: true".
+  - For other strangers encountering this file: This file can probably be customized
+    to do other things with the ancestors page. In the process of looking in the front matter
+    of every ancestor page, this file also happens to generate the URLs of every ancestor
+    page of the current page (and you might find this list of URLs useful).
+  - The main danger of this file is that it uses raw string parsing to extract the URLs
+    of each ancestor page, and that string parsing could be broken in edge cases.
+{%- endcomment -%}
+
+{%- comment -%}
+  - STEP 1: RAW BREADCRUMBS HTML
+  - This file takes advantage of the fact that Just the Docs already generates breadcrumbs.
+    https://just-the-docs.com/docs/navigation/parents/
+  - So, we start by capturing the HTML of the breadcrumbs. Buried in that HTML is the URL of
+    every ancestor page.
+{%- endcomment -%}
+{%- capture ancestors_html -%}
+{%- include components/breadcrumbs.html -%}
+{%- endcapture -%}
+
+{%- comment -%}
+At this point, ancestors_html is assigned to some raw HTML like this:
+
+<nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/toplevelpage/">Top Level Page</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/toplevelpage/child/">Child</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/toplevelpage/child/grandchild/">Grandchild</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Greatgrandchild</span></li>
+  </ol>
+</nav>
+{%- endcomment -%}
+
+
+{%- comment -%}
+  - STEP 2: EXTRACT URLS FROM BREADCRUMBS HTML
+  - Now, we will do some cursed string manipulation on the above raw HTML, in the hopes of
+    getting an array of only the URLs inside the hrefs.
+  - Expected output after this step is an array like this:
+    ["/toplevelpage/", "/toplevelpage/child/", "/toplevelpage/grandchild/"]
+  - Note that the last element in the breadcrumb is the current page, so there's no link
+    in the last element, and our array does not have a link to the current page.
+    If you want a link to the current page, you can just do this: page.url
+    and that would output "/toplevelpage/child/grandchild/greatgrandchild/"
+{%- endcomment -%}
+
+{%- capture remove_me -%}
+<nav aria-label="Breadcrumb" class="breadcrumb-nav">
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</nav>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+<ol class="breadcrumb-nav-list">
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</ol>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+<li class="breadcrumb-nav-list-item">
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</li>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+<span>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</span>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- comment -%}
+At this point, ancestors_html is still raw HTML, but with most unneeded content stripped away:
+
+    <a href="/toplevelpage/">Top Level Page</a>
+    <a href="/toplevelpage/child/">Child</a>
+    <a href="/toplevelpage/child/grandchild/">Grandchild</a>
+    Greatgrandchild
+{%- endcomment -%}
+
+{%- comment -%}
+  - Now, the HTML just has the link tags, but it's still a big string.
+  - We will now take the big string and make an array where each link is an element.
+{%- endcomment -%}
+{%- assign ancestors_html_list = ancestors_html | split: "</a>" -%}
+
+{%- comment -%}
+At this point, ancestors_html_list is an array, with one link per element:
+
+ancestors_html_list[0] = <a href="/toplevelpage/">Top Level Page
+ancestors_html_list[1] = <a href="/toplevelpage/child/">Child
+ancestors_html_list[2] = <a href="/toplevelpage/child/grandchild/">Grandchild
+ancestors_html_list[3] = Greatgrandchild
+{%- endcomment -%}
+
+{%- comment -%}
+  - The last element is the current page and has no URL, so we use "pop" to delete
+    the last element of the array.
+  - If you want a link to the current page, you can just do this: page.url
+    and that would output "/toplevelpage/child/grandchild/greatgrandchild/"
+    You may want to add a line after this one to append page.url to the array.
+{%- endcomment -%}
+{%- assign ancestors_html_list = ancestors_html_list | pop -%}
+
+{%- comment -%}
+  - We will now take each element of the ancestors_html_list array, and extract
+    just the href link. The href links will be added to ancestors_url_list, an array
+    of strings with all ancestor URLs.
+  - To achieve this, we will take each individual element and split that string
+    on the " character, which creates a subarray like this:
+     item_split[0] = <a href=
+     item_split[1] = /toplevelpage/
+     item_split[2] = >Top Level Page"
+  - The URL we want is element 1 of this subarray, so we grab element 1
+    and add it to the "ancestors_url_list" which will have all our desired URLs.
+{%- endcomment -%}
+{%- assign ancestors_url_list = "" | split: "" -%}
+{%- for item in ancestors_html_list -%}
+  {%- assign item_split = item | split: '"' -%}
+  {%- assign ancestors_url_list = ancestors_url_list | push: item_split[1] -%}
+{%- endfor -%}
+
+{%- comment -%}
+At this point, ancestors_url_list is an array, with one URL (string) per element:
+
+ancestors_url_list[0] = /toplevelpage/
+ancestors_url_list[1] = /toplevelpage/child/
+ancestors_url_list[2] = /toplevelpage/child/grandchild/
+{%- endcomment -%}
+
+{%- comment -%}
+Note that if your site has a non-empty baseurl, this array will have the baseurl included:
+
+ancestors_url_list[0] = /thebaseurl/toplevelpage/
+ancestors_url_list[1] = /thebaseurl/toplevelpage/child/
+ancestors_url_list[2] = /thebaseurl/toplevelpage/child/grandchild/
+{%- endcomment -%}
+
+
+{%- comment -%}
+  - STEP 3: CHECK FRONT MATTER OF EACH ANCESTOR PAGE
+  - Adapted from https://edcupaioli.com/blog/accessing-content-from-other-pages-in-jekyll/
+  - We will check each page in ancestors_url_list, and look in each page's front matter
+    to see if we can find hide_content = true.
+  - ancestor_has_hide_content = true if any of the ancestor pages has hide_content = true.
+  - ancestor_has_hide_content = false if none of the ancestor pages have hide_content = true.
+  - We do the same to try and find unreleased_warning = true, and set
+    ancestor_has_unreleased_warning similarly.
+  - For other strangers encountering this file: You can customize this step to do whatever
+    you want with the ancestor URL array.
+{%- endcomment -%}
+
+{%- assign ancestor_has_hide_content = false -%}
+{%- assign ancestor_has_unreleased_warning = false -%}
+
+{%- comment -%}
+  - This loop goes through each of the ancestor URLs, one by one.
+{%- endcomment -%}
+{%- for item in ancestors_url_list -%}
+
+  {%- comment -%}
+    - Note that each item in ancestors_url_list has the baseurl attached, e.g.
+      "/thebaseurl/toplevelpage/child/grandchild/"
+    - However, note that the url field of each page does NOT have the baseurl attached, e.g.
+      "/toplevelpage/child/grandchild/"
+    - Therefore, we need the line that takes the item from ancestors_url_list
+      and removes the baseurl, so that the item can be compared to the url field of each page.
+  {%- endcomment -%}
+  {%- assign item_no_base = item | remove: site.baseurl -%}
+  
+  {%- assign ancestor_page = site.pages | where: 'url', item_no_base | first -%}
+
+  {%- if ancestor_page.hide_content == true -%}
+    {%- assign ancestor_has_hide_content = true -%}
+  {%- endif -%}
+
+  {%- if ancestor_page.unreleased_warning == true -%}
+    {%- assign ancestor_has_unreleased_warning = true -%}
+  {%- endif -%}
+
+{%- endfor -%}
+
+{%- comment -%}
+  - All done. At this point, ancestor_has_hide_content and ancestor_has_unreleased_warning are
+    each assigned to true or false as desired.
+  - Usage: In another file (for us, it's _layouts/page.html), you can write:
+
+    {%- include check_ancestors.html -%}
+  
+    and this will import all the code in this file, which means that in that other file,
+    you now have access to ancestor_has_hide_content (and any other variables you want).
+  - Debugging: To debug, I wrapped div tags around this entire file (add <div> at the top
+    of this file, and </div> at the bottom of this file). Then, in this file, I can render
+    any variables I want to see for printline debugging, like this:
+
+    !Begin Debug! {{ ancestors_url_list }} !End Debug!
+
+    and they will appear in the rendered HTML.
+{%- endcomment -%}

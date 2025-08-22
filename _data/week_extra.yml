@@ -1,0 +1,42 @@
+#####################################
+# Additional documentation          #
+#####################################
+
+# This can be used to add extra text in the "Week" column.
+# That's the left-most column that usually just has week numbers: 1, 2, 3, etc.
+# Example: 61B uses this to add links to weekly surveys.
+
+# Each entry in the week_extra array corresponds to one week box on the grid.
+# If you want a week with no annotation, you must explicitly add a blank array entry.
+
+# If your link is an external link to a different website, it should start with http://
+# or https://. For example, "https://example.com" is good, "example.com" is bad.
+# If your link is an internal link to another page on this website, you should write a
+# relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
+
+# If hide_extra: true, then nothing is rendered in that week's box.
+# If hide_extra: false (or not listed), then we follow these rendering rules:
+#   - If you leave both "name" and "link" blank, that week will have no extra text.
+#   - If you fill in "name" only, that week will have "name" as text.
+#   - If you fill in "name" and "link", that week will have "name" linking to "link".
+#   - Filling in "link" only is undefined (it'll just show nothing).
+
+# If you don't want this feature, just leave every entry of the array blank,
+# and/or set hide_extra: true in every entry.
+
+# If you want more than a single name/link, you have to go modify syllabus.html.
+# Ctrl+F "week_extra_element" for the place to edit.
+# This is not recommended, because the "Week" column isn't really meant for long text.
+
+week_extra:
+  - name: ""
+    link: ""
+  - name: "Survey"
+    link: "https://forms.gle/FFTFQmv2UJqooukH7"
+  - name: ""
+    link: ""
+  - name: "Survey"
+    link: "https://forms.gle/LeAN3ud6sejxEy5z7"
+    hide_extra: true
+  - name: "Survey"
+    link: "https://forms.gle/vMq7Qu8RGPQ2pDwj8"

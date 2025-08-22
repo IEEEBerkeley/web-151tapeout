@@ -1,45 +1,65 @@
+.role {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.cols-1 {
+  flex-basis: 100%;
+}
+
+// To add additional columns, copy this and replace 2 with the number of columns you want.
+// Note that this is not recommended, since things will get cramped on smaller screens.
+.cols-2 {
+  flex-basis: 100%;
+
+  @media only screen and (min-width: 750px) {
+    flex-basis: calc(100% / 2);
+  }
+}
+
 .staffer {
   display: flex;
-  margin: $sp-4 0;
+  padding: $sp-4;
+
+  .staffer-header {
+    display: flex;
+    flex-direction: row;
+  }
 
   .staffer-image {
     border-radius: 50%;
-    height: 100px;
+    height: 120px;
+    width: 120px;
+    aspect-ratio: 1;
     margin-right: $sp-4;
-    width: auto;
-  }
-
-  .anchor-heading {
-    right: auto;
-    left: -$sp-5;
   }
 
   .staffer-name,
-  .staffer-meta,
   p {
-    margin: 0 0 $sp-1 0;
+    margin: $sp-1 !important;
+  }
+
+  p {
+    font-size: 14px !important;
   }
 
   .staffer-name {
-    @extend .d-inline-block;
+    margin: $sp-1 !important;
+  }
+
+  .mr-05 {
+    margin-right: 0.5rem !important;
   }
 
   .staffer-pronouns {
-    @extend .label, .text-grey-dk-300, .bg-grey-lt-000;
-
-    user-select: none;
+    margin-left: 0 !important;
+    margin-right: 0.5rem !important;
+    font-weight: 700;
+    @extend .label;
   }
 
-  .staffer-meta {
-    dt, dd, dd + dt {
-      margin-top: 0;
-    }
-  }
-
-  @include mq(sm) {
-    .staffer-meta {
-      display: grid;
-      grid-template-columns: auto 1fr;
-    }
+  .staff-email {
+    display: none;
   }
 }

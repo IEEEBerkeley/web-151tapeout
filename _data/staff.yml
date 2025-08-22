@@ -1,0 +1,34 @@
+# The settings in this file impact the way that the staff page is rendered.
+
+# To use the staff page in general:
+# 1. Create a file in _staffers/ with the name of the staff member, e.g. "evanbot.md".
+# 2. In the file, configure the following settings using the front matter (all fields except name and role are optional):
+#    - name: the staff member's name (string)
+#    - pronouns: the staff member's pronouns (string)
+#    - role: the staff member's role (string)
+#            Supported roles: Instructor, Head TA, TA, Tutor, Reader, TI
+#    - email: the staff member's email address (string)
+#    - photo: the staff member's photo file name (string)
+#    - website: the staff member's personal website (string)
+#    - extra: an additional title to display (IE: "Exam Lead") (string)
+#             People with this field set will be moved to the top of their category.
+#    - dspdata: whether the staff member has DSP data access (true/false)
+#    - spaaccess: whether the staff member has staff email access (true/false)
+#    - tags: a list of additional tags to display for the staff member (array of strings)
+#    - office_hours: the staff member's office hours (markdown)
+#    - section: the staff member's section (markdown)
+# 3. Optionally, the body of the file can contain additional markdown content that will be rendered as a descrption on the staff page.
+# 4. Add the staff member's photo in the assets/staff folder.
+# 5. The staff page will automatically render the staff members based on the files in the _staffers/ folder.
+
+# Determines the number of columns to render staff members in.
+# By default, staff members are rendered in a single column.
+# If you want to render staff members in two columns, set this to 2.
+# Numbers above 2 are not currently supported. To add more columns, see _sass/custom/staffer.scss.
+staff_columns: 1
+
+# Determines the text to display for the DSP access tag.
+dsp_text: 'DSP Data Access'
+
+# Determines the text to display for the staff email access tag.
+spa_text: 'Staff Email Access'

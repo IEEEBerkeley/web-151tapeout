@@ -1,0 +1,17 @@
+{% comment %}
+  Until JTD adds in native support, allow for a logo and title.
+  Issue: https://github.com/just-the-docs/just-the-docs/issues/938
+
+  To go back to JTD default, delete this file and update _config.yml.
+{% endcomment %}
+
+{% if site.logo and site.logo != empty and site.shorthand_text and site.shorthand_text != empty %}
+  <img src="{{ site.logo | relative_url }}" style="height: 100%; width: auto; max-height: 2.25rem;" alt="Course Logo">
+  <span style="margin-left: 0.5em; width: 100%">{{ site.shorthand_text }}</span>
+{% elsif site.logo and site.logo != empty %}
+  <div class="site-logo" role="img" aria-label="{{ site.title }}"></div>
+{% elsif site.shorthand_text and site.shorthand_text != empty %}
+  {{ site.shorthand_text }}
+{% else %}
+  {{ site.title }}
+{% endif %}

@@ -1,0 +1,135 @@
+#####################################
+# Instructions for updating website #
+#####################################
+
+# To upload Google Slides (or other externally-linked) lecture slides
+# to the website, use the "slides" field of each array entry below.
+
+# To upload PDF lecture slides to the website, just put the PDF
+# in assets/lectures using the filename convention below.
+# Change the "lecture_prefix" field to set the filename convention.
+#
+# The link to the slides will automatically appear once you
+# put the PDF with the right filename in the right folder.
+#
+# Lecture slide filepaths are all formatted based on the lecture number.
+# Pad lecture numbers, e.g. lecture 2 uses "02", not "2".
+#
+# For example, the first few lecture slides should be put at:
+#   - /assets/lectures/cs101-sp25-lec01.pdf
+#   - /assets/lectures/cs101-sp25-lec02.pdf
+#     ...
+#   - /assets/lectures/cs101-sp25-lec25.pdf
+# If you'd like a different filepath or prefix (in the example, it's
+# /assets/lectures/cs161-sp25-lec), change "lecture_prefix" below.
+
+# You can use a mix of Google Slides and PDFs. The "slides" link takes priority,
+# and if the link is empty, then the repo looks for a PDF instead.
+
+# Use the "video", "recording", "quiz" links to link videos/recordings/quizzes.
+
+# "readings" is an array, where each array element has a "name" and a "link".
+# All name/link elements in the array get rendered in that lecture box.
+# If you want a reading with no link, just include "name" without "link" for
+# that array element.
+
+# Rules for linking slides/videos/recordings/quizzes/readings:
+# If your link is an external link to a different website, it should start with http://
+# or https://. For example, "https://example.com" is good, "example.com" is bad.
+# If your link is an internal link to another page on this website, you should write a
+# relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
+
+# You can use the "extra" field to write any arbitrary markdown in the box.
+# **Warning**: You should only use this sparingly for one-off links, e.g. an extra
+# PDF that only appears in one cell. **Do not** use this for recurring links like
+# adding "Slides" to every assignment - that should go in "parts" instead.
+# "parts" has built-in aria-label tags to help distinguish recurring links like
+# "Slides" in every cell, but "extra" does not have these tags, so each "extra"
+# that you add should be distinct from all the others.
+
+#####################################
+# Additional documentation          #
+#####################################
+
+# Each element in the array corresponds to one box on the website.
+# This includes boxes that are blank or don't have a lecture.
+# By default, each box spans 1 row (edit the default in syllabus.yml).
+# To override this, use the "rowspan" attribute to resize a box.
+
+# The website automatically numbers each element in the array.
+# To skip numbering (e.g. for a "no lecture" box), add
+# "nonumber: True" as an attribute.
+
+# To add a box on a date without a lecture, or to add an extra box
+# on a date with a lecture, add the date to the extra_days field
+# in syllabus.yml (more documentation there). Then, to fill in your
+# new box, add an element in the array where the box would appear.
+
+# To highlight the cell in a special color, add "classes", and we have
+# some pre-defined colors like "schedule-purple" and "schedule-green".
+# You can add your own colors in _sass/custom/custom.scss if you want.
+# Example:
+# - title: "My Purple Leture"
+#   slides: "https://www.google.com"
+#   classes:
+#     - schedule-purple
+
+# - You should not need to change these unless you're rebuilding the website.
+# - If your lecture slides are Google Slides links, ignore this.
+# - If your lecture slides are PDFs in this repo, update this.
+lecture_prefix: "/assets/lectures/cs101-sp25-lec"
+# - If your readings are PDFs in the repo, update this and readings.html.
+# - If your readings are external links, then ignore this.
+readings_prefix: "/assets/notes/cs101-sp25-note"
+
+lectures:
+  - title: "Introduction and Security Principles"
+    slides: "https://docs.google.com/presentation/d/18fP58xbaJQAKTzf3p1pW06lSWkT0umdlQCQuRwzsIhQ"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9eGdDJv1UIYuMs0oYJ5DCa"
+    readings:
+      - name: "Ch. 1"
+        link: "https://textbook.cs161.org/principles/principles.html"
+  - title: "x86 Assembly and Call Stack"
+    slides: "" # example of lecture slides automatically linking to a PDF file instead of Google Slides
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_R0dlFGLnAxOEJtWXahfdN"
+    rowspan: 2
+    readings:
+      - name: "Ch. 2"
+        link: "https://textbook.cs161.org/memory-safety/x86.html"
+      - name: "x86/GDB Cheat Sheet"
+        link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
+  - title: "Memory Safety Vulnerabilities"
+    slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
+    readings:
+      - name: "Ch. 3"
+        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+  - title: "Holiday (No Lecture)"
+    nonumber: true # skips assigning a number to this box
+  - title: "Memory Safety Vulnerabilities 2"
+    slides: "https://docs.google.com/presentation/d/140pgaTQT-7HgqP9Y7NLHXIlFeJHNInLauVaqFn455yI"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX-g5R_j2HkJBohgyIkppSCl"
+    readings:
+      - name: "Ch. 3"
+        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+    extra: "[Sample extra link](https://google.com)"
+  - title: "Midterm (7–9pm)"
+    nonumber: true # skips assigning a number to this box
+  - title: "Optional Lecture"
+    slides: "https://docs.google.com/presentation/d/1gYzYu-T0ymaVcH87-mlCPc7qnRmWacHpKebCentDjoM"
+    classes:
+      - schedule-red
+  - title: "Mitigating Memory Safety Vulnerabilities"
+    video: "https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm"
+    slides: "https://docs.google.com/presentation/d/1ZONpx6qlqR2GyIF2nL3zjuDiOVknApgFOVwMHagmskI"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_clJKxwAxzStm4ctkNDXvt"
+    readings:
+      - name: "Ch. 4"
+        link: "https://textbook.cs161.org/memory-safety/mitigations.html"
+  - title: "Intro to Cryptography"
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
+    slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    readings:
+      - name: "Ch. 5"
+        link: "https://textbook.cs161.org/crypto/intro.html"

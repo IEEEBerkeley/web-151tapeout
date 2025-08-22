@@ -1,30 +1,68 @@
-<script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link
+  rel="preload"
+  href="{{ '/assets/css/just-the-docs-dark.css' | relative_url }}"
+  as="style"
+>
+
+<!-- Intentionally duplicates the default theme stylesheet so there's a fallback when changing themes -->
+<link
+  id="jtdThemeCSS"
+  rel="stylesheet"
+  href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}"
+>
+
 <script>
-    let toggleDark = () => {
-        let setDark = jtd.getTheme() !== 'dark';
-        document.documentElement.setAttribute(
-            'data-theme',
-            setDark ? 'dark' : 'default',
-        );
-        jtd.setTheme(setDark ? 'dark' : 'default');
-        localStorage.setItem('darkMode', String(setDark));
-    };
+  /* Script to enable persistent dark mode. */
 
-    window.addEventListener('DOMContentLoaded', () => {
-        /* Add event to dark mode button. */
-        let a = document.querySelector("#main-header > nav > ul > li:nth-child(1) > a");
-        a.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleDark();
-        });
+  jtd.getTheme = function () {
+    var cssFileHref = (
+      document.getElementById('jtdThemeCSS') || document.querySelector('[rel="stylesheet"]')
+    ).getAttribute('href');
+    return cssFileHref.substring(cssFileHref.lastIndexOf('-') + 1, cssFileHref.length - 4);
+  };
 
-        /* Read local storage state. */
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            toggleDark();
-        } else {
-            document.documentElement.setAttribute('data-theme', 'default');
-        }
-    });
+  jtd.setTheme = function (theme) {
+    var cssFile = document.getElementById('jtdThemeCSS') || document.querySelector('[rel="stylesheet"]');
+    cssFile.setAttribute('href', cssFile.getAttribute('href').replace(jtd.getTheme(), theme));
+  };
+
+  let toggleDark = () => {
+    let setDark = jtd.getTheme() !== 'dark';
+    document.documentElement.setAttribute('data-theme', setDark ? 'dark' : 'default');
+    document.documentElement.setAttribute('data-theme', setDark ? 'dark' : 'default');
+    jtd.setTheme(setDark ? 'dark' : 'default');
+    localStorage.setItem('darkMode', String(setDark));
+
+    if (typeof calendar !== 'undefined') {
+      calendar.setColorScheme(setDark ? 'dark' : 'light');
+    }
+  };
+
+  if (localStorage.getItem('darkMode') === 'true') {
+    toggleDark();
+  }
 </script>
+
+<!-- Script for LaTeX rendering. -->
+<link
+  rel="stylesheet"
+  href="{{ '/assets/katex/katex.min.css' | relative_url }}"
+>
+<script defer src="{{ '/assets/katex/katex.min.js' | relative_url }}"></script>
+<script>
+  function renderKaTeX() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true },
+      ],
+    });
+  }
+</script>
+<script
+  defer
+  src="{{ '/assets/katex/contrib/auto-render.min.js' | relative_url }}"
+  onload="renderKaTeX();"
+></script>

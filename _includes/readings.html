@@ -1,0 +1,85 @@
+{%- comment -%}
+- This code renders one project box on the syllabus.
+- See lectures.yml for how to feed information into this template.
+- include.element is a Liquid object (like a dictionary) representing one
+  entry of lectures.yml. You can access specific fields of this object with
+  syntax like include.element.readings.
+- include.number can be used to get an automatically increasing number. The
+  number increments per box, except for "nonumber" boxes.
+- Note: By default, this file is not used in CS161's course-site-template repo.
+  However, if you want a separate "Readings" column on the website, then go to
+  syllabus.html and uncomment out some things.
+- For simplicity, this code is identical to the code in lectures.html that renders
+  readings in the "Lectures" box.
+{%- endcomment -%}
+
+{%- comment -%}
+  - Use syllabus.yml to toggle whether readings boxes alternate colors
+    per week.
+{%- endcomment -%}
+{%- if site.data.syllabus.readings_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
+- The character inside the "forloop.last" if-case is the delimiter.
+  Here, it's a linebreak, but you can change it to a slash or something else.
+{%- endcomment -%}
+{%- for reading in include.element.readings -%}
+  {%- if reading.link and reading.link != empty -%}
+    <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
+  {%- else -%}
+    {{ reading.name }}
+  {%- endif -%}
+  {% if forloop.last == false %}
+    <br>
+  {% endif %}
+{%- endfor -%}
+
+{%- comment -%}
+  - BEGIN: Autonumbering feature
+  - Here is some code for auto-numbering readings and automatically looking up filenames.
+  - For example, use this if you have one notes PDF per lecture, with the same numbering,
+    e.g. "/assets/notes/cs188-sp25-note01.pdf", "assets/notes/cs188-sp25-note02.pdf", etc.
+  - This block of code is not used by default. Uncomment if you want to use it.
+{%- endcomment -%}
+{%- comment -%}
+
+  {%- comment -%}
+    - Build note filenames automatically from the note number.
+    - First pad number (2-->02), then create a base filepath,
+      then create filename (see lectures.yml for more on filenames).
+  {%- endcomment -%}
+  {%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+  {%- assign notes_path = site.data.lectures.readings_prefix | append: filenumber | append: ".pdf" -%}
+
+  {%- comment -%}
+    - Automatically check if files exist.
+  {%- endcomment -%}
+  {%- assign notes_exists = false -%}
+  {%- for page in site.static_files -%}
+    {%- if page.path == notes_path -%}
+      {%- assign notes_exists = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%}
+    - Slightly hacky way to ensure notes links don't show when there's nonumber.
+  {%- endcomment -%}
+  {%- if include.element.nonumber -%}
+    {%- assign notes_exists = false -%}
+  {%- endif -%}
+
+  {%- if notes_exists -%}
+    <br>
+    <a href="{{ notes_path | relative_url }}">Note {{ include.number }}</a>
+  {%- endif -%}
+
+{%- endcomment -%}
+{%- comment -%}
+  - END: Autonumbering feature
+{%- endcomment -%}
+
+</td>

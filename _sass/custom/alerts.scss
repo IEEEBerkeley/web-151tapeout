@@ -1,0 +1,146 @@
+// Alerts
+
+// This mixin is copied from SensEdu. The only change is that title is moved to the fourth argument.
+// https://github.com/ShiegeChan/SensEdu/blob/2d652bba53a90fca749ba2deb19e189c477d1a38/docs/_sass/support/mixins/_alerts.scss
+@mixin alert($name, $color, $background-color: rgba($color, 0.1), $title: null) {
+  blockquote.#{$name} {
+    border-left: 4px solid $color;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    padding-top: 0.6rem !important;
+    padding: 0.8rem;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: $background-color;
+
+    > p:first-child {
+      margin-top: 0;
+    }
+
+    > p:last-child {
+      margin-bottom: 0;
+    }
+
+    @if $title {
+      &::before {
+        color: $color;
+        content: $title;
+        display: block;
+        
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        padding-bottom: 0.125rem;
+      }
+    } @else {
+      > p:first-child {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: $color;
+        display: block;
+
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        padding-bottom: 0.125rem;
+      }
+
+      > p:nth-child(2) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  p.#{$name} {
+    border-left: 4px solid $color;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    padding-top: 0.6rem !important;
+    padding: 0.8rem;
+    background-color: $background-color;
+
+    &::before {
+        color: $color;
+        content: $title;
+
+        text-transform: uppercase;
+        font-size: 0.8em;
+        padding-bottom: 0.175rem;
+        display: block;
+        font-weight: bold;
+    }
+  }
+}
+
+// DEFINE DEFAULT TEMPLATE DEFAULTS
+// Do not change these unless you know what you're doing.
+// To add your own alerts with different colors, use the mixin above in custom.scss.
+
+// Light mode foreground colors
+$blue-alert-color: $blue-300;
+$green-alert-color: #025A47;
+$purple-alert-color: $purple-200;
+$yellow-alert-color: #674E04;
+$red-alert-color: #A21A1A;
+$alert-color: $grey-dk-100;
+
+// Light mode background colors
+$blue-alert-bg-color: rgba($blue-100, 0.1);
+$green-alert-bg-color: rgba($green-100, 0.1);
+$purple-alert-bg-color: rgba($purple-alert-color, 0.1);
+$yellow-alert-bg-color: rgba($yellow-300, 0.1);
+$red-alert-bg-color: rgba($red-100, 0.1);
+$alert-bg-color: rgba($alert-color, 0.1);
+
+@if $color-scheme == dark {
+  // Dark mode foreground colors
+  $blue-alert-color: #a0cfee;
+  $green-alert-color: $green-000;
+  $purple-alert-color: #C0B2F5;
+  $yellow-alert-color: #FAC529;
+  $red-alert-color: #F8A0A0;
+  $alert-color: $grey-dk-100;
+
+  // Dark mode background colors
+  $blue-alert-bg-color: rgba($blue-000, 0.1);
+  $green-alert-bg-color: rgba($green-100, 0.095);
+  $purple-alert-bg-color: rgba($purple-000, 0.1);
+  $yellow-alert-bg-color: rgba($yellow-000, 0.1);
+  $red-alert-bg-color: rgba($red-300, 0.1);
+  $alert-bg-color: rgba($alert-color, 0.1);
+}
+
+// DEFAULT ALERTS
+// You can use these without modifying any configuration.
+// See Project 1 for an example of how to use these alerts in a project.
+@include alert(NOTE, $blue-alert-color, $blue-alert-bg-color, "Note");
+@include alert(TIP, $green-alert-color, $green-alert-bg-color, "Tip");
+@include alert(IMPORTANT, $purple-alert-color, $purple-alert-bg-color, "Important");
+@include alert(WARNING, $yellow-alert-color, $yellow-alert-bg-color, "Warning");
+@include alert(CAUTION, $red-alert-color, $red-alert-bg-color, "Caution");
+@include alert(ALERT, $alert-color, $alert-bg-color);
+
+// FAST MIXINS
+// If you want to use a default color, with a different title, 
+// you can use this mixin instead of the full alert mixin.
+// $name: the CSS class name for the alert
+// $title: the title of the alert, defaults to null (no title)
+@mixin blue-alert($name, $title: null) {
+  @include alert($name, $blue-alert-color, $blue-alert-bg-color, $title);
+}
+
+@mixin green-alert($name, $title: null) {
+  @include alert($name, $green-alert-color, $green-alert-bg-color, $title);
+}
+
+@mixin purple-alert($name, $title: null) {
+  @include alert($name, $purple-alert-color, $purple-alert-bg-color, $title);
+}
+
+@mixin yellow-alert($name, $title: null) {
+  @include alert($name, $yellow-alert-color, $yellow-alert-bg-color, $title);
+}
+
+@mixin red-alert($name, $title: null) {
+  @include alert($name, $red-alert-color, $red-alert-bg-color, $title);
+}

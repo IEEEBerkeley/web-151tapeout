@@ -1,3 +1,7 @@
+#################################
+# Official Jekyll documentation #
+#################################
+
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole site, values
@@ -13,67 +17,174 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: EECS151 Tapeout
-tagline: The Berkeley IEEE student branch's EECS151 tapeout decal
-description: Get hands-on with SoC design :3
-author: Elam and Lucy
-# baseurl: '' # the subpath of your site, e.g. /blog
-url: 'https://ieee.github.io' # the base hostname & protocol for your site, e.g. http://example.com
-exclude: ["Gemfile", "Gemfile.lock", "LICENSE"]
 
-# Theme settings
-remote_theme: just-the-docs/just-the-docs@v0.10.0
+
+#######################################################
+# Config you may need to change once per semester     #
+#######################################################
+
+# - Jekyll default variables.
+# - For the title on the homepage, the name people see in the browser tab, etc.
+title: "EECS151 Tapeout"
+description: "The Berkeley IEEE student branch's EECS151 tapeout decal. Get hands-on with SoC design :3"
+
+# - Jekyll default variable.
+# - The subpath of your site, e.g. /blog
+# - Example: If you build your site to inst.eecs.berkeley.edu/~cs188/sp25,
+#   then this should say "/~cs188/sp25"
+# - Example: If you build your site to sp25.cs161.org,
+#   then this should say "" since there is no subpath
+# - If not empty, the baseurl MUST start with a leading slash,
+#   and MUST NOT have a slash at the end. "/sp25" is good, "/sp25/" is bad
+baseurl: ""
+
+# - Jekyll default variable.
+# - The full URL of your homepage.
+url: "https://ieee.github.io"
+
+# - Used in _includes/title.html and index.html
+# - Path to an image to display in two places:
+# - 1) The sidebar (or top bar on mobile)
+# - 2) At the top-right of the homepage
+# - Leave blank to omit a logo.
+# - If you want the homepage to have a different logo from the sidebar,
+#   then edit index.html.
+logo: ""
+
+# - Used in _includes/title.html
+# - Optional text that replaces site.title at the top of the sidebar when set.
+# - If logo is set and shorthand_text is left blank, the logo will take up 100% of the space.
+shorthand_text: "EECS151 Tapeout"
+
+# - Can be used throughout the website (e.g. project specs).
+# - Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
+#   This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
+semester_slug: "fa25"
+semester_full: "Fall 2025"
+
+# - Updates the top line of the homepage, i.e. the one that says
+#   "Instructor: EvanBot / Lecture: TuTh, 12:30–2:00 PM, Wheeler 150 [Zoom, Playlist]"
+# - Note: Instructor is pulled from the _staffers folder.
+lecture:
+  time: "Fri, 3:00–4:30 PM"
+  location:
+      name: "BWRC"
+      link: ""
+heading_links:
+  - text: "Zoom"
+    url: "https://berkeley.zoom.us"
+  - text: "Playlist"
+    url: "https://www.youtube.com/playlist?list=PLp8QV47qJEg4fg0UAZzU2FeuZrs6XMjkK"
+
+# - Used on staff.md to show students the staff email.
+staff_email: "evanbot@berkeley.edu"
+
+# - Use this to show/hide the "announcements" feature on the homepage.
+# - Add your weekly announcements in the _announcements folder.
+enable_announcements: true
+
+
+#######################################################
+# Config to show/hide warnings on pages               #
+#######################################################
+
+# - Set this to true at the start of semesters to show a warning on every page.
+under_construction: true
+
+# - Set this to true in the first few weeks of the semester
+#   if discussion times are uncertain (populates on calendar.md only).
+discussions_under_construction: true
+
+# - Set this to true to archive the semester and show a warning on every page.
+outdated: false
+
+# - If you set outdated, what is the latest site URL that we should link to?
+# - Ideally this is a URL that always redirects to your current semester, e.g.
+#   https://cs161.org or https://inst.eecs.berkeley.edu/~cs188
+# - This is only used in _layouts/page.html and _layouts/project.html.
+latest_sem: "https://151tapeout.berkie.ee/"
+
+
+#######################################################
+# Config for external links in the top-right corner   #
+#######################################################
+
+# - Leave "Dark Mode" unchanged. It uses Javascript to toggle dark mode.
+
+aux_links:
+  Dark Mode:
+    - "#"
+  Ed:
+    - "https://edstem.org"
+  # OH Queue:
+  #   - "https://oh.cs161.org"
+  Source Code on GitHub:
+    - "https://github.com/IEEEBerkeley/web-151tapeout"
+
+#######################################################
+# Config for Right Table of Contents                  #
+#######################################################
+# These settings set the upper and lower bounds of the headings
+# that will be included in the right table of contents. (The 
+# numbers correspond to h1, h2, h3, etc.)
+toc_min_heading: 2
+toc_max_heading: 6
+
+# When using JS, this sets the depth of the table of contents
+# that will be shown when the page loads. When you scroll into 
+# a section that has a deeper heading, the table of contents will
+# automatically expand to show that section.
+#
+# In order to prevent layout creep, when JS is off, the table of contents
+# will display the minimum depth between toc_max_heading and toc_collapse_depth.
+# To show all headings, set this to 6.
+# Note: Setting this to 1 (showing only h1 headers) doesn't work and leads to
+# the same behavior as setting this to 2 (showing h1 and h2 headers).
+toc_collapse_depth: 3
+
+#######################################################
+# Config you will probably never need to change,      #
+# unless you are rebuilding the website               #
+#######################################################
+
+# - If you have files that should not be built on the website, list them here.
+# - Example: Your project spec has a README that's for staff editing the spec.
+# - Example: You have a Python script you use to automate something in the repo.
+exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor", "README.md"]
+
+# - Every few years, we may need to update the JTD version to pull from upstream.
+theme: just-the-docs
+
 color_scheme: wider
 search_enabled: true
 heading_anchors: true
+enable_copy_code_button: true
 permalink: pretty
-aux_links:
-  "Dark Mode":
-    - "#"
-  Berkeley IEEE:
-    - 'https://ieee.berkeley.edu'
 footer_content:
 
-# Collections for website data
+# Formally define the collections that we use.
+# https://jekyllrb.com/docs/collections/
 collections:
   staffers:
-  modules:
-  schedules:
   announcements:
 # Default layouts for each collection type
+# Sets the default layout for every markdown file in _staffers/ to 'staffer'
+# and the default subpath for images in _staffers/ to '/assets/staff/'
+# https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   - scope:
-      path: ''
+      path: ""
       type: staffers
     values:
       layout: staffer
-      height: 300
-      subpath: '/assets/images/'
-      width: 300
-  - scope:
-      path: ''
-      type: modules
-    values:
-      layout: module
-  - scope:
-      path: ''
-      type: schedules
-    values:
-      layout: schedule
-  - scope:
-      path: ''
-      type: announcements
-    values:
-      layout: announcement
+      subpath: "/assets/staff/"
 
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blanklines: false
-  profile: false
+plugins:
+  - jekyll-seo-tag
 
-liquid:
-  error_mode: strict
-  strict_filters: true
+# This part is to silence sass deprecating warnings, remove after JTD fixes this upstream.
+# https://github.com/just-the-docs/just-the-docs/pull/1548
+# and https://github.com/jekyll/jekyll/issues/9686
+sass:
+  quiet_deps: true
+  silence_deprecations: ["import"] # https://github.com/just-the-docs/just-the-docs/issues/1607

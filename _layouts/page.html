@@ -1,0 +1,103 @@
+---
+layout: default
+---
+{% assign toc_depth = page.toc_collapse_depth | default: site.toc_collapse_depth %}
+{% assign toc_min = page.toc_min_heading | default: site.toc_min_heading %}
+{% assign toc_max = page.toc_max_heading | default: site.toc_max_heading %}
+
+{% if toc_depth < toc_max %}
+  {% assign max_heading = toc_depth %}
+{% else %}
+  {% assign max_heading = toc_max %}
+{% endif %}
+
+{%- if site.under_construction -%}
+  <p class="WARNING">
+    This site is under construction. All dates and policies are tentative until this message goes away.
+  </p>
+{%- endif -%}
+
+{%- if site.outdated -%}
+  <p class="WARNING">
+    This website contains materials from a past semester. Information, assignments, and announcements may no longer be
+    relevant. Please refer to the <a href="{{ site.latest_sem }}">current semester's site</a> for up-to-date content.
+  </p>
+{%- endif -%}
+
+{%- comment -%}
+  - check_ancestors.html is a cursed file.
+  - It outputs a variable "ancestor_has_hide_content", which is a Boolean that tells us
+    whether or not any of the current page's ancestors has hide_content set to true.
+  - It also outputs "ancestor_has_unreleased_warning", which is a Boolean that tells us
+    whether or not any of the current page's ancestors has unreleased_warning set to true.
+{%- endcomment -%}
+{%- include check_ancestors.html -%}
+
+{%- comment -%}
+  - If unreleased_warning is true for the current page OR any of the current page's ancestors,
+    then show the warning.
+    In other words: If ANY ancestor has "unreleased_warning: true", the warning will show.
+  - If unreleased_warning is a non-true value (i.e. anything but true) for the current page AND
+    for all of the current page's ancestors, then don't show the warning.
+    In other words: ALL ancestors must have "unreleased_warning: false" for the warning to not show.
+  - If you want rendering to only be controlled by unreleased_warning for the current page and not
+    any ancestors, then just delete "or ancestor_has_unreleased_warning == true".
+  - For other customization, you can try editing check_ancestors.html though that file is
+    cursed and I do not recommend it.
+{%- endcomment -%}
+{%- if page.unreleased_warning == true or ancestor_has_unreleased_warning == true -%}
+  <p class="WARNING">
+    This page is in an unreleased state. This warning message will go away once the page is released.
+  </p>
+{%- endif -%}
+
+{%- comment -%}
+  - If hide_content is true for the current page OR any of the current page's ancestors,
+    then render a message and do not render any content.
+    In other words: If ANY ancestor has "hide_content: true", the page will not render.
+  - If hide_content is a non-true value (i.e. anything but true) for the current page AND
+    for all of the current page's ancestors, then render the content as usual.
+    In other words: ALL ancestors must have "hide_content: false" for the content to render.
+  - If you want rendering to only be controlled by hide_content for the current page and not
+    any ancestors, then just delete "or ancestor_has_hide_content == true".
+  - For other customization, you can try editing check_ancestors.html though that file is
+    cursed and I do not recommend it.
+{%- endcomment -%}
+{% capture content %}
+  {%- if page.hide_content == true or ancestor_has_hide_content == true -%}
+    <div>This page has not been released yet.</div>
+  {%- else -%}
+    {{ content }}
+  {%- endif -%}
+{% endcapture %}
+
+{%- comment -%}
+  - If hide_content is true (for the current page or ANY ancestor page), then override
+    any hide_right_toc setting and do not render the table of contents.
+  - This ensures that if a page is not rendered, its table of contents isn't rendered.
+  - If hide_content is not true (for the current page and ALL ancestor pages),
+    then preserve the original hide_right_toc setting of the current page.
+{%- endcomment -%}
+{%- assign do_not_render_right_toc = page.hide_right_toc -%}
+{%- if page.hide_content == true or ancestor_has_hide_content == true -%}
+  {%- assign do_not_render_right_toc = true -%}
+{%- endif -%}
+
+{%- comment -%}
+  - If do_not_render_right_toc is any non-true value, then render a table of contents
+    on the right. The table of contents is generated from the page's headers, and has
+    scrollspy enabled.
+  - If do_not_render_right_toc is true, do not render the table of contents.
+{%- endcomment -%}
+{%- unless do_not_render_right_toc == true -%}
+  <div class="content-container">
+    <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
+      {% include toc.html html=content sanitize=true class="nav-list" submenu_class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" h_min=toc_min h_max=max_heading %}
+    </nav>
+  <div class="content">
+    {{ content }}
+  </div>
+</div>
+{%- else -%}
+  {{ content }}
+{%- endunless -%}

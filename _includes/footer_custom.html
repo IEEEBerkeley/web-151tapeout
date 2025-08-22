@@ -1,0 +1,45 @@
+{% assign headingSelector = '' %}
+
+{% comment %} Set min/max/depth to the page-specific value and fallback to the value set in config.yml {% endcomment %}
+{% assign toc_depth = page.toc_collapse_depth | default: site.toc_collapse_depth %}
+{% assign toc_min = page.toc_min_heading | default: site.toc_min_heading %}
+{% assign toc_max = page.toc_max_heading | default: site.toc_max_heading %}
+
+{% comment %} Convert min/max to a string of the form "h1, h2, h3" {% endcomment %}
+{% for heading in (toc_min..toc_max) %}
+  {% assign headingSelector = headingSelector | append: 'h' | append: heading %}
+  {% if forloop.last == false %}
+    {% assign headingSelector = headingSelector | append: ',' %}
+  {% endif %}
+{% endfor %}
+
+<script>
+  (function () {
+    var navList = document.querySelector('.aux-nav-list');
+    if (!navList || !navList.firstElementChild) return;
+    var darkToggle = navList.firstElementChild;
+    darkToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleDark();
+    });
+  })();
+</script>
+
+<script src="{{ '/assets/js/tocbot.min.js' | relative_url }}"></script>
+<script>
+  // Tries to mirror the HTML TOC
+  tocbot.init({
+    tocSelector: '.js-toc',
+    contentSelector: '.content',
+    headingSelector: '{{ headingSelector }}',
+    ignoreSelector: '.no_toc',
+    hasInnerContainers: true,
+    linkClass: 'nav-list-link',
+    activeLinkClass: 'active',
+    listClass: 'nav-list',
+    listItemClass: 'nav-list-item',
+    activeListItemClass: 'active',
+    collapseDepth: {{ toc_depth }},
+    scrollSmooth: false,
+  });
+</script>

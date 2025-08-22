@@ -1,0 +1,102 @@
+{%- comment -%}
+- This code renders one project box on the syllabus.
+- See projects.yml for how to feed information into this template.
+- include.element is a Liquid object (like a dictionary) representing one
+  entry of projects.yml. You can access specific fields of this object with
+  syntax like include.element.title or include.element.classes.
+- Note: For simplicity, homeworks.html, labs.html, and projects.html are built identically.
+  Additional columns should be able to use the same template as well.
+{%- endcomment -%}
+
+{%- comment -%}
+  - Use syllabus.yml to toggle whether project boxes alternate colors
+    per week.
+{%- endcomment -%}
+{%- if site.data.syllabus.project_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
+  - If title exists in projects.yml, show title.
+    This overrides the automatic numbering.
+  - If no title exists, write "Project 3", where the number comes from
+    automatic numbering in syllabus.html.
+{%- endcomment -%}
+{%- capture assignment_title -%}
+  {%- if include.element.title and include.element.title != empty -%}
+    {{ include.element.title }}
+  {%- else -%}
+    Project {{ include.number }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  - If link exists AND hide_links is false (or not listed), get the link from projects.yml and
+    wrap it around assignment_title (as computed in the block above).
+  - Else, just return assignment_title unlinked.
+{%- endcomment -%}
+{%- capture assignment_linked_title -%}
+  {%- if include.element.link and include.element.link != empty -%}
+    {%- unless include.element.hide_links -%}
+      <a href="{{ include.element.link | relative_url }}">{{ assignment_title }}</a>
+    {%- else -%}
+      {{ assignment_title }}
+    {%- endunless -%}
+  {%- else -%}
+    {{ assignment_title }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  - Get due date from projects.yml.
+{%- endcomment -%}
+{%- capture assignment_due -%}
+  {%- if include.element.due and include.element.due != empty -%}
+    (due {{ include.element.due | date: "%a %b %d" }})
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  - If "nonumber: true", render the title in projects.yml and nothing else.
+  - Else, render the title and due date.
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+  {{ include.element.title }}
+{%- else -%}
+  {{ assignment_linked_title }}
+  <br>
+  {{ assignment_due }}
+{%- endif -%}
+
+{%- comment -%}
+  - Render links to specific parts.
+  - For each part: Link renders iff link exists AND hide_links is false (or not listed).
+{%- endcomment -%}
+{%- if include.element.parts and include.element.parts.size > 0 -%}
+<br><br>
+{%- endif -%}
+{%- for part in include.element.parts -%}
+  {%- if part.link and part.link != empty -%}
+    {%- unless include.element.hide_links -%}
+      <a href="{{ part.link | relative_url }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
+    {%- else -%}
+      {{ part.name }}
+    {%- endunless -%}
+  {%- else -%}
+    {{ part.name }}
+  {%- endif -%}
+  {% if forloop.last == false %}
+    {{}} / {{}}
+  {% endif %}
+{%- endfor -%}
+
+{%- comment -%}
+  - Add any extra content.
+{%- endcomment -%}
+{%- if include.element.extra -%}
+  <br>
+  {{ include.element.extra | markdownify }}
+{%- endif -%}
+</td>

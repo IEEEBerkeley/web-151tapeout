@@ -1,0 +1,138 @@
+# - google_api_key:
+#    - Follow the steps on https://fullcalendar.io/docs/v4/google-calendar
+#      until "Getting Set Up" to obtain the google_api_key.
+# - For the other 3 fields, you'll need to open the calendar settings:
+#   - Go to https://calendar.google.com
+#   - Click the 3 dots next to the calendar name in the left side-bar
+#   - Click "Settings and sharing"
+# - google_calendar_id:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Integrate calendar"
+#   - Copy "Calendar ID"
+#   - The thing you copy should look like c_c12345@group.calendar.google.com
+# - google_calendar_embed_link:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Integrate calendar"
+#   - Copy "Public URL to this calendar"
+#   - The URL you copy should have calendar/embed?src=c_ in it
+# - google_calendar_add_link:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Access permissions for events"
+#   - Click "Get shareable link"
+#   - Copy the URL with calendar/u/0?cid= in it
+
+google_api_key: None
+google_calendar_id: None
+
+google_calendar_embed_link: None
+google_calendar_add_link: None
+
+# - Google Calendar events should all be prefixed "[CS101 SP25]" so that students
+#   adding it to their calendar see "[CS101 SP25] Lecture" instead of just "Lecture".
+# - But, on the website itself, students should just see "Lecture" instead of
+#   "[CS101 SP25]" in front of all the calendar events, to avoid clutter.
+# - Put the common prefix here so that the JS in calendar.html will remove the prefix
+#   when rendering the website.
+# - Note the trailing space is included here too, so that "[CS101 SP25] Lecture"
+#   becomes "Lecture", not " Lecture".
+remove_prefix: "[CS101 SP25] "
+
+# You can set up your own categories that are filtered and colored as you choose. Every
+# event can only be matched to one category. The order that entries are provided in below
+# is the order that categories will be applied in.
+# Defaults are provided below, but each category consists of the following properties:
+# - "name": What should appear on the button that filters the category. If you'd like
+#   multiple colors to match to one button, use the same "name" for both categories.
+# - "match": A regular expression reprsenting which event names should be matched to
+#   this category
+# - "lightTheme" / "darkTheme": The colors you'd like to display in light and dark mode
+#   - "--event-background": The background color
+#   - "--event-foreground": The foreground color
+#   - "--event-border-color": The color of the border
+# A note about accessibility: The default colors we provide are already vetted to make sure
+# they meet contrast requirements. If you are going to add new colors, please make sure they
+# are WCAG AA(A) compliant by using https://webaim.org/resources/contrastchecker/.
+#
+# To use the default coloring, please title your events as follows:
+# - OH: Include "Office Hours" in the name
+# - Lecture: Include "Lecture" in the name
+# - Discussion: Include "Discussion" in the name
+#   - If you have special discussion names, we've also created different coloring for
+#     - Bridge
+#     - Exam Prep
+# - Project Party: Include "Project" and "Party" in the name (for instance, "Project 1 Party" works)
+# - Exam: Include "Exam", "Quest", "Midterm", "MT", or "Final" in the name
+# - Review Session: Include "Review Session" in the name
+categories:
+  - name: "Office Hours"
+    match: "instructor"
+    lightTheme:
+      --event-background: "#BDF1FC"
+      --event-border-color: "#108DA6"
+    darkTheme:
+      --event-background: "#0B5260"
+      --event-border-color: "#BDF1FC"
+  - name: "Office Hours"
+    match: "office hours"
+    lightTheme:
+      --event-background: "#C0E1D2"
+      --event-border-color: "#1E6142"
+    darkTheme:
+      --event-background: "#164B32"
+      --event-border-color: "#C0E1D2"
+  - name: "Lecture"
+    match: "lecture"
+    lightTheme:
+      --event-background: "#CAC8EB"
+      --event-border-color: "#363187"
+    darkTheme:
+      --event-background: "#363197"
+      --event-border-color: "#CAC8EB"
+  - name: "Discussion"
+    match: "bridge"
+    lightTheme:
+      --event-background: "#EAB59E"
+      --event-border-color: "#B43600"
+    darkTheme:
+      --event-background: "#7A2500"
+      --event-border-color: "#EAB59E"
+  - name: "Discussion"
+    match: "exam prep"
+    lightTheme:
+      --event-background: "#F4EFC3"
+      --event-border-color: "#B4B11C"
+    darkTheme:
+      --event-background: "#4C4B10"
+      --event-border-color: "#F4EFC3"
+  - name: "Discussion"
+    match: "discussion"
+    lightTheme:
+      --event-background: "#ECD9C9"
+      --event-border-color: "#8D5C32"
+    darkTheme:
+      --event-background: "#6A4625"
+      --event-border-color: "#ECD9C9"
+  - name: "Project Party"
+    match: "(?=.*project)(?=.*party)"
+    lightTheme:
+      --event-background: "#EBC8EB"
+      --event-border-color: "#873179"
+    darkTheme:
+      --event-background: "#4D134D"
+      --event-border-color: "#EBC8EB"
+  - name: "Review Session"
+    match: "review session"
+    lightTheme:
+      --event-background: "#EBC8EB"
+      --event-border-color: "#873179"
+    darkTheme:
+      --event-background: "#4D134D"
+      --event-border-color: "#EBC8EB"
+  - name: "Exam"
+    match: "exam|quest|midterm|mt|final"
+    lightTheme:
+      --event-background: "#E2E2E2"
+      --event-border-color: "#A5A5A5"
+    darkTheme:
+      --event-background: "#363187"
+      --event-border-color: "#CAC8EB"

@@ -1,0 +1,153 @@
+{%- comment -%}
+  - This code renders one lecture box on the syllabus.
+  - See lectures.yml for how to feed information into this template.
+  - include.element is a Liquid object (like a dictionary) representing one
+    entry of lectures.yml. You can access specific fields of this object with
+    syntax like include.element.title or include.element.slides.
+{%- endcomment -%}
+
+{%- comment -%}
+  - Use syllabus.yml to toggle whether lecture boxes alternate colors
+    per week.
+{%- endcomment -%}
+{%- if site.data.syllabus.lecture_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
+  - Build filenames automatically from the lecture number.
+  - First pad lecture number (2-->02), then create a base filepath,
+    then create filenames (see lectures.yml for more on filenames).
+{%- endcomment -%}
+{%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- assign slides_path = site.data.lectures.lecture_prefix | append: filenumber | append: ".pdf" -%}
+
+{%- comment -%}
+  - Automatically check if files exist.
+{%- endcomment -%}
+{%- assign slides_exists = false -%}
+{%- for page in site.static_files -%}
+  {%- if page.path == slides_path -%}
+    {%- assign slides_exists = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - Slightly hacky way to ensure slides links don't show when there's nonumber.
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+  {%- assign slides_exists = false -%}
+{%- endif -%}
+
+{%- comment -%}
+  - Title of the lecture, e.g. "1. Introduction"
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+  {{ include.element.title | markdownify }}
+{%- elsif include.element.title -%}
+  {{ include.number }}. {{ include.element.title }}
+{%- endif -%}
+
+{%- comment -%}
+  - Each element of this array will hold an HTML link, e.g.
+    ["Slides", "Video", "Recording"]
+{%- endcomment -%}
+{%- assign links_array = "" | split: "/" -%}
+
+{%- comment -%}
+  - Render slides.
+  - If lectures.yml has slides link, prioritize using that.
+  - Else, if lectures.yml has no slides link but we find a slides PDF
+    in the automatically-built filepath, fall back on using that.
+  - If neither exists, don't render slides.
+{%- endcomment -%}
+{%- assign render_slides = false -%}
+{%- capture slides -%}
+{%- if include.element.slides and include.element.slides != empty -%}
+  {%- assign render_slides = true -%}
+  <a href="{{ include.element.slides | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+{%- elsif slides_exists -%}
+  {%- assign render_slides = true -%}
+  <a href="{{ slides_path | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+{%- endif -%}
+{%- endcapture -%}
+{%- if render_slides -%}
+  {% assign links_array = links_array | push: slides %}
+{%- endif -%}
+
+{%- comment -%}
+  - Render video.
+{%- endcomment -%}
+{%- capture video -%}
+<a href="{{ include.element.video | relative_url }}" aria-label="Video for Lecture {{ include.number }} ({{ include.element.title }})">Video</a>
+{%- endcapture -%}
+{%- if include.element.video and include.element.video != empty -%}
+  {% assign links_array = links_array | push: video %}
+{%- endif -%}
+
+{%- comment -%}
+  - Render recording.
+{%- endcomment -%}
+{%- capture recording -%}
+<a href="{{ include.element.recording | relative_url }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
+{%- endcapture -%}
+{%- if include.element.recording and include.element.recording != empty -%}
+  {% assign links_array = links_array | push: recording %}
+{%- endif -%}
+
+{%- comment -%}
+  - Render quiz.
+{%- endcomment -%}
+{%- capture quiz -%}
+<a href="{{ include.element.quiz | relative_url }}" aria-label="Quiz for Lecture {{ include.number }} ({{ include.element.title }})">Quiz</a>
+{%- endcapture -%}
+{%- if include.element.quiz and include.element.quiz != empty -%}
+  {% assign links_array = links_array | push: quiz %}
+{%- endif -%}
+
+{%- comment -%}
+  - Display slides/video/recording/quiz, separated with slashes.
+{%- endcomment -%}
+{%- if links_array.size > 0 -%}
+<br>
+{%- endif -%}
+{%- for link in links_array -%}
+  {{ link }}
+  {%- unless forloop.last %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - Slash between slides/video/recording/quiz and readings.
+  - If you would like newline between these and readings, change this.
+{%- endcomment -%}
+{%- if include.element.readings.size > 0 -%}
+&nbsp;/&nbsp;
+{%- endif -%}
+
+{%- comment -%}
+  - Render readings.
+  - If you would like readings to appear elsewhere, change this.
+  - The character inside the "forloop.last" if-case is the delimiter.
+    Here, it's a slash, but you can change it to a slash or something else.
+{%- endcomment -%}
+{%- for reading in include.element.readings -%}
+  {%- if reading.link and reading.link != empty -%}
+    <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
+  {%- else -%}
+    {{ reading.name }}
+  {%- endif -%}
+  {% if forloop.last == false %}
+    {{}} / {{}}
+  {% endif %}
+{%- endfor -%}
+
+{%- comment -%}
+  - In case we want to display anything extra (e.g. extra link) in the box.
+{%- endcomment -%}
+{%- if include.element.extra -%}
+  <br>
+  {{ include.element.extra | markdownify }}
+{%- endif -%}
+</td>

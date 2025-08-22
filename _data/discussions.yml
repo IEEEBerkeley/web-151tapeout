@@ -1,0 +1,138 @@
+#####################################
+# Instructions for updating website #
+#####################################
+
+# To upload discussion worksheets and solutions to the website, just
+# put the files in assets/discussions using the filename format below.
+
+# Pad discussion numbers, e.g. discussion 2 uses "02", not "2".
+# For example, the files for discussion 2 should be placed at:
+#   - /assets/discussions/cs101-sp25-disc02.pdf
+#   - /assets/discussions/cs101-sp25-disc02-sols.pdf
+#   - /assets/discussions/cs101-sp25-examprep02.pdf
+#   - /assets/discussions/cs101-sp25-examprep02-sols.pdf
+# If you'd like a different filepath or prefix (in the example, it's
+# /assets/lectures/cs161-sp25-disc), change the filename bases below.
+
+# To hide worksheets, set "hide_worksheet: true"
+# To hide solutions, set "hide_sols: true"
+# To hide videos, set "hide_videos: true"
+
+# If you need to manually put something in the discussion cell
+# (e.g. links to multiple worksheets for exam review weeks), there's
+# an extra field that you can use. Anything you put in the extra
+# field will be converted to Markdown.
+
+# To highlight the cell in a special color, add "classes", and we have
+# some pre-defined colors like "schedule-purple" and "schedule-green".
+
+# Example showing various features:
+# - title: "Discussion Title"
+#   hide_worksheet: false
+#   hide_sols: true
+#   hide_videos: false
+#   slides: "https://www.example.com"
+#   extra: | 
+#     [Extra guide](https://www.google.com)
+#
+#     [Another extra guide](https://www.youtube.com)
+#   classes:
+#     - schedule-purple
+
+
+#####################################
+# Additional documentation          #
+#####################################
+
+# - Each element in the array corresponds to one box on the website.
+#   This includes boxes that are blank or don't have a discussion.
+#   By default, each box spans 2 rows (edit the default in syllabus.yml).
+#   To override this, use the "rowspan" attribute to resize a box.
+# - The website automatically numbers each element in the array.
+#   To skip numbering (e.g. for a "no discussion" box), add
+#   "nonumber: True" as an attribute.
+#
+# - Discussion filepaths all start with the same base filepath and phrase,
+#   which you can configure below, e.g. "/assets/discussion/cs101-sp25".
+# - Then, we add a dash after the base phrase.
+# - Then, we allow for up to 3 types of discussions, which you can
+#   configure below. By default, we use "disc" and "examprep" as 2 types,
+#   and leave the third type unused.
+# - Then, we add a discussion number, with increasing numbers per box
+#   on the syllabus. Numbering customization would be done in syllabus.html.
+#
+# - Worksheets show iff hide_worksheet is false/unlisted AND the filepath exists.
+#   Solutions show iff hide_sols is false/unlisted AND the filepath exists.
+#   Videos show iff hide_videos is false/unlisted AND video link exists in discussions.yml.
+#   Slides show iff hide_slides is false/unlisted AND slide link exists in discussions.yml.
+# - "classes" is an array passed to discussion.html to format the cell.
+#   We predefined colors like schedule-purple, schedule-green, etc. in 
+#   and you can add your own in _sass/custom/custom.scss if you want.
+
+# Example usage of all the features:
+#
+# - title: "Welcome"
+#   nonumber: false
+#   hide_worksheet: false
+#   hide_sols: true
+#   hide_videos: false
+#   hide_slides: false
+#   regular_video: "https://youtube.com/1"
+#   examprep_video: "https://youtube.com/2"
+#   bridge_video: "https://youtube.com/3"
+#   regular_slides: "https://slides.google.com/1"
+#   examprep_slides: "https://slides.google.com/2"
+#   bridge_slides: "https://slides.google.com/3"
+#   extra: |
+#     [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
+#   rowspan: 3
+#   classes:
+#     - schedule-purple
+
+# - Every semester, you have to change the path to reflect the latest semester.
+# - The path MUST start with a leading slash, and MUST NOT have a slash at the end.
+# - You should not need to change the rest of these unless you're rebuilding the website.
+# - Slugs and path are used to build filenames.
+# - Names are used to display on the website, e.g. "Exam Prep: Worksheet"
+# - If your website builds at a different baseurl (e.g. your homepage is
+#   cs161.org/sp25), the path should not include the baseurl.
+#   It should still be /assets/discussions/cs161-sp25,
+#   not /sp25/assets/discussions/cs161-sp25.
+discussion_filename_bases:
+  path: "/assets/discussions/cs101-sp25"
+  regular_slug: "disc"
+  examprep_slug: "examprep"
+  bridge_slug: "bridge"
+  regular_name: "Discussion"
+  examprep_name: "Exam Prep"
+  bridge_name: "Bridge"
+
+discussions:
+  - title: "Welcome"
+    regular_video: "https://www.youtube.com/watch?v=FMLe4g8wGXE"
+    examprep_video: ""
+    regular_slides: "https://cs161.org"
+    examprep_slides: ""
+    extra: |
+      [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
+    rowspan: "1"
+  - title: "Security Principles and x86"
+    regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_ecmDFIpyrCBwaVD5oMiP5"
+    examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8BHDozB7T9J32Lf5T4a_G1"
+    regular_slides: ""
+    examprep_slides: ""
+  - title: "No Discussion"
+    nonumber: true # skips assigning a number to this box
+  - title: "Memory Safety"
+    # Notice that solutions and videos aren't being linked, even though the solution PDFs
+    # and video links exist, because the "hide" fields are set to true.
+    # Also, hide_slides is false but there are no slides linked, so nothing is linked.
+    hide_worksheet: false
+    hide_sols: true
+    hide_videos: true
+    hide_slides: false
+    regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
+    examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
+    regular_slides: ""
+    examprep_slides: ""
+    rowspan: "3" # because this week has an extra row for the midterm

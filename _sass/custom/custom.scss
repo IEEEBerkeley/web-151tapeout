@@ -1,103 +1,80 @@
-// Just the Class dependencies
-@import 'card';
-
 // Just the Class styles
 @import 'announcement';
-@import 'module';
-@import 'schedule';
 @import 'staffer';
+@import "alerts";
 
-// // Overrides
-// code {
-//   font-size: 14px;
-//   padding: 0.2em 0.4em;
-//   border: none;
-// }
+// Example custom alert from CS161!
+@include blue-alert(STORY, "Story");
 
-// iframe {
-//   max-width: 100%;
-// }
+// Example alert with customizable title. 
+@include green-alert(CUSTOM);
 
-// details {
-//   @extend .mb-4;
-// }
-
-// summary {
-//   @extend .btn, .btn-outline;
-
-//   width: 100%;
-// }
-
-// .main-content {
-//   dl {
-//     display: block;
-//     grid-template-columns: none;
-//   }
-
-//   dt {
-//     font-weight: 700;
-//     text-align: start;
-
-//     &::after {
-//       content: normal;
-//     }
-//   }
-
-//   dd {
-//     font-weight: normal;
-
-//     + dt {
-//       margin-top: 1em;
-//     }
-//   }
-// }
-
-
-.algorithm p {
-  margin-top: 0;
-  margin-bottom: 0;
+// Begin UCB custom style
+td {
+  min-width: 0;
 }
 
-.algorithm blockquote {
-  margin-top: 0;
-  margin-bottom: 0;
+th {
+  min-width: 0;
 }
 
-span code {
-  color: var(--blue-color);
-  color: var(--green-color);
-  color: var(--red-color);
+// Center "week" column, used in syllabus.html only
+table td.week-cell {
+  text-align: center; 
+  vertical-align: middle;
 }
 
-code span[style*="color: blue"] {
-  color: var(--blue-color) !important;
+// Add a new table that overrides the default table styles
+// This is used in the syllabus.html file to allow for 
+// spanned cells that span multiple rows.
+// To use, add the class "spanned-table" to the table tag
+// and add the class "starting-row" to any row that 
+// touches the left side of the table.
+table.spanned-table tr:not(.starting-row) {
+  & th,td {
+    border-left: $border $border-color!important;
+  }
 }
 
-code[style*="color: blue"] {
-  color: var(--blue-color) !important;
+// Button copying
+.btn-copy-code {
+  display: none;
 }
 
-code span[style*="color: green"] {
-  color: var(--green-color) !important;
+// End UCB custom style
+
+// Overrides
+
+iframe {
+  max-width: 100%;
 }
 
-code[style*="color: green"] {
-  color: var(--green-color) !important;
+.main-content-wrap {
+  max-width: $content-width;
+  margin: auto;
 }
 
-code span[style*="color: red"] {
-  color: var(--red-color) !important;
+.js-toc.nav-list .nav-list-item > .nav-list {
+  display: block;
+
+  .is-collapsed {
+    display: none;
+  }
 }
 
-code[style*="color: red"] {
-  color: var(--red-color) !important;
-}
-
-
-// No right navigation if width is less than content-width
 @media (max-width: $content-width) {
   .content-nav {
     display: none;
+  }
+
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .main {
+    margin: 0 !important;
+    max-width: 100%;
   }
 }
 
@@ -109,9 +86,9 @@ code[style*="color: red"] {
 // If width of display is at least content width:
 @media (min-width: $content-width) {
   .main-header {
-    position: fixed; // Sticky header (stays on top as you scroll)
-    top: 0; // Forces header on top of page
-    z-index: 1000; // Forces header drawn on top of everything else
+    position: fixed;  // Sticky header (stays on top as you scroll)
+    top: 0;           // Forces header on top of page
+    z-index: 1000;    // Forces header drawn on top of everything else
   }
 
   // Forces site title in sidebar to be flush with header
@@ -123,14 +100,13 @@ code[style*="color: red"] {
   // Add whitespace between header and start of content (site title, logo)
   .main-content-wrap {
     margin-top: 60px;
+    padding-bottom: 0px !important;
   }
 
-  h1,
-  h2,
-  h3 {
+  h1, h2, h3, td {
     scroll-margin-top: 60px;
   }
-
+  
   // Make the site title in the sidebar smaller
   .site-title {
     font-size: 19px !important;
@@ -143,29 +119,29 @@ code[style*="color: red"] {
   }
 
   // Begin Right nav scroll
-  .page {
+  .content-container {
     display: flex;
     flex-direction: row-reverse; // put nav on right
     justify-content: flex-end;
   }
 
   .content {
-    max-width: 75%
+    width: 75%;
   }
 
   .content-nav {
-    margin: 0 0 2rem;
-    padding: 0;
-    position: sticky;
-    float: right;
-    top: 6em;
-    flex: 0 0 25%;
-    max-width: 25%;
-    max-height: calc(100vh - 2em);
-    height: 100%;
-    overflow-y: auto;
-    font-size: 0.9em;
-    line-height: 1.8;
+      margin: 0 0 2rem;
+      padding: 0;
+      position: sticky;
+      float: right;
+      top: 6em;
+      flex: 0 0 25%;
+      width: 25%;
+      max-height: calc(100vh - 2em);
+      height: 100%;
+      overflow-y: auto;
+      font-size: 0.9em;
+      line-height: 1.8;
 
     .nav-list-link {
       text-decoration: none;
@@ -192,30 +168,12 @@ code[style*="color: red"] {
       }
     }
   }
-
   // End Right Nav scroll
-}
-
-@media print {
-  .content-nav {
-    display: none;
-  }
-
-  .content {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .main {
-    margin: 0 !important;
-    max-width: 100%;
-  }
 }
 
 // If width of display is at least content+nav width
 // (i.e. whitespace on either side of site):
 @media (min-width: $content-width + $nav-width) {
-
   // Set default site title in sidebar font size
   .site-title {
     font-size: 24px !important;
@@ -225,18 +183,27 @@ code[style*="color: red"] {
   .main-header {
     width: $content-width;
   }
+
 }
 
-.content-nav .nav-list .nav-list-item .nav-list-link {
-  padding-top: 0.7rem !important;
-  padding-bottom: 0.7rem !important;
-  text-decoration: none;
-}
 
-@media (max-width: $content-width) {
-  .content-nav {
-    display: none;
-  }
+// End UCB header fixes
+
+// Color scheme for syllabus cells
+td.schedule-purple {
+  background-color: rgba($purple-000, 0.15) !important;
+}
+td.schedule-blue {
+  background-color: rgba($blue-000, 0.15) !important;
+}
+td.schedule-green {
+  background-color: rgba($green-000, 0.15) !important;
+}
+td.schedule-red {
+  background-color: rgba($red-000, 0.15) !important;
+}
+td.schedule-yellow {
+  background-color: rgba($yellow-300, 0.13) !important;
 }
 
 .nav-list .nav-list-item .nav-list-link {
@@ -245,27 +212,18 @@ code[style*="color: red"] {
   text-decoration: none;
 }
 
+.content-nav .nav-list .nav-list-item .nav-list-link {
+  padding-top: 0.7rem !important;
+  padding-bottom: 0.7rem !important;
+  text-decoration: none;
+}
+
 .nav-list-expander .btn-reset,
 .nav-list .nav-list-item .nav-list-expander {
   padding: 0.85rem !important;
   min-height: 2.75rem !important;
   min-width: 2.75rem !important;
-}
-
-td a,
-li a,
-.padded-link {
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
-  text-decoration: none;
-  min-width: 2.75rem !important;
-  min-height: 2.75rem !important;
-}
-
-h2.text-delta+ul a,
-#markdown-toc a {
-  padding: 0.75rem !important;
-  text-decoration: none;
+  cursor: pointer;
 }
 
 .anchor-heading {
@@ -275,3 +233,118 @@ h2.text-delta+ul a,
   margin-left: -0.6rem !important;
   margin-top: -0.7rem !important;
 }
+
+td a,
+li a,
+.padded-link, 
+.btn-outline,
+ .btn-outline-primary {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  text-decoration: none;
+  min-width: 2.75rem !important;
+  min-height: 2.75rem !important;
+}
+
+h2.text-delta + ul a, #markdown-toc a {
+  padding: 0.75rem !important;
+  text-decoration: none;
+}
+
+// Begin 61C Calendar config
+
+.popper, .tooltip { background: #D9CD48; }
+.popper .popper__arrow, .tooltip .tooltip-arrow { border-color: #D9CD48; }
+
+
+#calendarContainer {
+  // holy shit this library is weird
+  .tui-full-calendar-layout {
+    --cal-border-color: rgba(var(--bs-body-color-rgb), 0.7);
+    height: auto !important;
+    overflow: hidden !important;
+    
+    .tui-full-calendar-dayname-container,
+    .tui-full-calendar-timegrid-container {
+      overflow: hidden !important;
+    }
+
+    .tui-full-calendar-dayname-layout *,
+    .tui-full-calendar-left,
+    .tui-full-calendar-splitter,
+    .tui-full-calendar-timegrid-left *,
+    .tui-full-calendar-timegrid-h-grid *,
+    .tui-full-calendar-time-date,
+    .tui-full-calendar-timegrid-sticky-container,
+    .tui-full-calendar-timegrid-sticky-container * {
+      border-color: var(--cal-border-color) !important;
+    }
+    .tui-full-calendar-dayname-container {
+      border-width: 2px !important;
+    }
+    .tui-full-calendar-left {
+      border-right-width: 2px !important;
+    }
+
+    .tui-full-calendar-week-container {
+      height: unset;
+
+      .tui-full-calendar-vlayout-container {
+        height: unset !important;
+
+        & > * {
+          height: unset !important;
+        }
+      }
+    }
+
+    .tui-full-calendar-timegrid-todaymarker {
+      font-size: 0;
+    }
+
+    .tui-full-calendar-time-schedule {
+      font-weight: 500;
+    }
+
+    .tui-full-calendar-schedule-title {
+      word-break: break-word;
+    }
+  }
+}
+
+// End 61C Calendar config
+
+// kbd styling "inspired by" https://dylanatsmith.com/wrote/styling-the-kbd-element
+// colors in wider/dark-wider
+#calendarShortcuts {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  
+  > .shortcut {
+    margin-left: 1em;
+    margin-right: 1em;
+    white-space: nowrap;
+  }
+}
+
+kbd {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-style: solid;
+  cursor: default;
+  /* font-size: 0.75em; */
+  line-height: 1;
+  min-width: 0.75rem;
+  display: inline-block;
+  text-align: center;
+  padding: 2px 5px;
+  position: relative;
+  top: -1px;
+  
+  &:hover {
+    top: 1px;
+  }
+}
+
+// end kbd styling

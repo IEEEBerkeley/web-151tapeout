@@ -1,0 +1,237 @@
+{%- comment -%}
+  - This code renders one discussion box on the syllabus.
+  - See discussions.yml for how to feed information into this template.
+  - include.element is a Liquid object (like a dictionary) representing one
+  entry of discussions.yml. You can access specific fields of this object with
+  syntax like include.element.title or include.element.classes.
+{%- endcomment -%}
+
+{%- comment -%}
+  - Use syllabus.yml to toggle whether discussion boxes alternate colors
+    per week.
+{%- endcomment -%}
+{%- if site.data.syllabus.discussion_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
+  Render title with or without number, depending on the "nonumber" attribute.
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+  {{ include.element.title }}
+{%- elsif include.element.title -%}
+  {{ include.number }}. {{ include.element.title }}
+{%- endif -%}
+
+{%- comment -%}
+  - Build filenames automatically from the discussion number.
+    If this is a "nonumber" cell, assign filenumber to empty string.
+  - First pad discussion number (2-->02), then create a base filepath.
+{%- endcomment -%}
+{%- assign bases = site.data.discussions.discussion_filename_bases -%}
+{%- unless include.number -%}
+  {%- assign filenumber = '' -%}
+{%- else -%}
+  {%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- endunless -%}
+{%- assign filename_base = bases.path | append: '-' -%}
+
+{%- comment -%}
+  - Create regular filenames (see discussion.yml for more on filenames).
+{%- endcomment -%}
+{%- assign filename_regular = filename_base | append: bases.regular_slug | append: filenumber | append: ".pdf" -%}
+{%- assign filename_regular_sols = filename_base | append: bases.regular_slug | append: filenumber | append: "-sols.pdf" -%}
+
+{%- comment -%}
+  - Create examprep filenames (see discussion.yml for more on filenames).
+{%- endcomment -%}
+{%- assign filename_examprep = filename_base | append: bases.examprep_slug | append: filenumber | append: ".pdf" -%}
+{%- assign filename_examprep_sols = filename_base | append: bases.examprep_slug | append: filenumber | append: "-sols.pdf" -%}
+
+{%- comment -%}
+  - Create bridge filenames (see discussion.yml for more on filenames).
+  - If you want more than 3 discussion types, then copy-paste the two lines below and change "bridge"
+    to your new types. Also, add a new "base" type in discussions.yml.
+{%- endcomment -%}
+{%- assign filename_bridge = filename_base | append: bases.bridge_slug | append: filenumber | append: ".pdf" -%}
+{%- assign filename_bridge_sols = filename_base | append: bases.bridge_slug | append: filenumber | append: "-sols.pdf" -%}
+
+{%- comment -%}
+  - Automatically check if files exist.
+  - If you want more than 3 discussion types, you can add two more "exists" variables.
+{%- endcomment -%}
+{%- assign regular_exists = false -%}
+{%- assign regular_sols_exists = false -%}
+{%- assign examprep_exists = false -%}
+{%- assign examprep_sols_exists = false -%}
+{%- assign bridge_exists = false -%}
+{%- assign bridge_sols_exists = false -%}
+{%- for page in site.static_files -%}
+  {%- if page.path == filename_regular -%}
+    {%- assign regular_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_regular_sols -%}
+    {%- assign regular_sols_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_examprep -%}
+    {%- assign examprep_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_examprep_sols -%}
+    {%- assign examprep_sols_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_bridge -%}
+    {%- assign bridge_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_bridge_sols -%}
+    {%- assign bridge_sols_exists = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - One array for each discussion type.
+  - Later, we will render everything in the array separated by slashes, e.g.
+    "Worksheet / Solutions / Video / Slides"
+{%- endcomment -%}
+{%- assign regular_links = "" | split: "/" -%}
+{%- assign examprep_links = "" | split: "/" -%}
+{%- assign bridge_links = "" | split: "/" -%}
+
+{%- comment -%}
+  - Worksheets show iff hide_worksheet is false/unlisted AND the filepath exists.
+{%- endcomment -%}
+{%- unless include.element.hide_worksheet -%}
+  {%- if regular_exists -%}
+    {%- capture regular_worksheet_link -%}
+      <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+    {%- endcapture -%}
+    {%- assign regular_links = regular_links | push: regular_worksheet_link -%}
+  {%- endif -%}
+  {%- if examprep_exists -%}
+    {%- capture examprep_worksheet_link -%}
+      <a href="{{ filename_examprep | relative_url }}" aria-label="Worksheet for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+    {%- endcapture -%}
+    {%- assign examprep_links = examprep_links | push: examprep_worksheet_link -%}
+  {%- endif -%}
+  {%- if bridge_exists -%}
+    {%- capture bridge_worksheet_link -%}
+      <a href="{{ filename_bridge | relative_url }}" aria-label="Worksheet for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+    {%- endcapture -%}
+    {%- assign bridge_links = bridge_links | push: bridge_worksheet_link -%}
+  {%- endif -%}
+{%- endunless -%}
+
+{%- comment -%}
+  - Solutions show iff hide_sols is false/unlisted AND the filepath exists.
+{%- endcomment -%}
+{%- unless include.element.hide_sols -%}
+  {%- if regular_sols_exists -%}
+    {%- capture regular_sols_link -%}
+      <a href="{{ filename_regular_sols | relative_url }}" aria-label="Solutions for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
+    {%- endcapture -%}
+    {%- assign regular_links = regular_links | push: regular_sols_link -%}
+  {%- endif -%}
+  {%- if examprep_sols_exists -%}
+    {%- capture examprep_sols_link -%}
+      <a href="{{ filename_examprep_sols | relative_url }}" aria-label="Solutions for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
+    {%- endcapture -%}
+    {%- assign examprep_links = examprep_links | push: examprep_sols_link -%}
+  {%- endif -%}
+  {%- if bridge_sols_exists -%}
+    {%- capture bridge_sols_link -%}
+      <a href="{{ filename_bridge_sols | relative_url }}" aria-label="Solutions for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
+    {%- endcapture -%}
+    {%- assign bridge_links = bridge_links | push: bridge_sols_link -%}
+  {%- endif -%}
+{%- endunless -%}
+
+{%- comment -%}
+  - Videos show iff hide_videos is false/unlisted AND video link exists in discussions.yml.
+{%- endcomment -%}
+{%- unless include.element.hide_videos -%}
+  {%- if include.element.regular_video and include.element.regular_video != empty -%}
+    {%- capture regular_video_link -%}
+      <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endcapture -%}
+    {%- assign regular_links = regular_links | push: regular_video_link -%}
+  {%- endif -%}
+  {%- if include.element.examprep_video and include.element.examprep_video != empty -%}
+    {%- capture examprep_video_link -%}
+      <a href="{{ include.element.examprep_video | relative_url }}" aria-label="Video for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endcapture -%}
+    {%- assign examprep_links = examprep_links | push: examprep_video_link -%}
+  {%- endif -%}
+  {%- if include.element.bridge_video and include.element.bridge_video != empty -%}
+    {%- capture bridge_video_link -%}
+      <a href="{{ include.element.bridge_video | relative_url }}" aria-label="Video for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endcapture -%}
+    {%- assign bridge_links = bridge_links | push: bridge_video_link -%}
+  {%- endif -%}
+{%- endunless -%}
+
+{%- comment -%}
+  - Slides show iff hide_slides is false/unlisted AND slide link exists in discussions.yml.
+{%- endcomment -%}
+{%- unless include.element.hide_slides -%}
+  {%- if include.element.regular_slides and include.element.regular_slides != '' -%}
+    {%- capture regular_slides_link -%}
+      <a href="{{ include.element.regular_slides | relative_url }}" aria-label="Slides for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
+    {%- endcapture -%}
+    {%- assign regular_links = regular_links | push: regular_slides_link -%}
+  {%- endif -%}
+  {%- if include.element.examprep_slides and include.element.examprep_slides != '' -%}
+    {%- capture examprep_slides_link -%}
+      <a href="{{ include.element.examprep_slides | relative_url }}" aria-label="Slides for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
+    {%- endcapture -%}
+    {%- assign examprep_links = examprep_links | push: examprep_slides_link -%}
+  {%- endif -%}
+  {%- if include.element.bridge_slides and include.element.bridge_slides != '' -%}
+    {%- capture bridge_slides_link -%}
+      <a href="{{ include.element.bridge_slides | relative_url }}" aria-label="Slides for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
+    {%- endcapture -%}
+    {%- assign bridge_links = bridge_links | push: bridge_slides_link -%}
+  {%- endif -%}
+{%- endunless -%}
+
+{%- comment -%}
+  - Render regular links, split with slashes.
+{%- endcomment -%}
+{%- if regular_links.size > 0 -%}
+<br><br>{{ bases.regular_name }}:&nbsp;
+{%- endif -%}
+{%- for link in regular_links -%}
+  {{ link }}
+  {%- unless forloop.last %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - Render examprep links, split with slashes.
+{%- endcomment -%}
+{%- if examprep_links.size > 0 -%}
+<br><br>{{ bases.examprep_name }}:&nbsp;
+{%- endif -%}
+{%- for link in examprep_links -%}
+  {{ link }}
+  {%- unless forloop.last %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - Render bridge links, split with slashes.
+{%- endcomment -%}
+{%- if bridge_links.size > 0 -%}
+<br><br>{{ bases.bridge_name }}:&nbsp;
+{%- endif -%}
+{%- for link in bridge_links -%}
+  {{ link }}
+  {%- unless forloop.last %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - Add any extra content.
+{%- endcomment -%}
+{%- if include.element.extra -%}
+  <br>
+  {{ include.element.extra | markdownify }}
+{%- endif -%}
+</td>
