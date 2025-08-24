@@ -17,7 +17,7 @@ This schedule is tentative; additional times may be added later. The existing ti
 
 If you would like to view this calendar ouside of the course website, please click "Open in Google Calendar" below. If you would like to add this calendar to your personal Google Calendar, please click "Add to your personal calendar" below.
 
-[Open in Google Calendar]({{ "https://calendar.google.com/calendar/embed?src=c_5667391b618ea271c4025a8fc2700937cc1d32a195e1873f00f570f251ee5a4b%40group.calendar.google.com&ctz=America%2FLos_Angeles" }}){: .btn .btn-outline .fs-3 } [Add to your personal calendar]({{ site.data.calendar.google_calendar_add_link }}){: .btn .btn-outline .fs-3 }
+[Open in Google Calendar]({{ "https://calendar.google.com/calendar/embed?src=c_5667391b618ea271c4025a8fc2700937cc1d32a195e1873f00f570f251ee5a4b%40group.calendar.google.com&ctz=America%2FLos_Angeles" }}){: .btn .btn-outline .fs-3 } [Add to your personal calendar]({{ "http://berkie.ee/tapeoutcalendar" }}){: .btn .btn-outline .fs-3 }
 
 {% include calendar.html %}
 

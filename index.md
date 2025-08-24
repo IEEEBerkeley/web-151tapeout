@@ -47,6 +47,16 @@ hide_right_toc: true
 {%- if site.enable_announcements -%}
 ## Announcements
 
+- **Enroll** for Fall 2025 [here](http://berkie.ee/bhjq05)!
+
+- **Lecture**: Fridays 3-4:30pm in [BWRC](https://www.google.com/search?q=berkeley+wireless+research+center). Ring the doorbell to be let in! We will meet in the big central room.
+
+- You will find labs and project repositories on our [Github](https://github.com/ucb-eecs151tapeout).
+
+- When in doubt, ask on the Discord: [berkie.ee/151t-discord](https://berkie.ee/151t-discord).
+
+- You can also email us at [151tapeout@ieee.berkeley.edu](151tapeout@ieee.berkeley.edu).
+
 {{ site.announcements.last }}
 
 [Past announcements](announcements){: .btn .btn-outline .fs-3 }

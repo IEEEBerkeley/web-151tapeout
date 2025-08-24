@@ -18,7 +18,7 @@ This course spans 13 weeks. Class meets for two hours once a week. Each class wi
 
 ### Enrolling in EECS151T
 
-Fill out [THIS](https://berkie.ee/eecs151-tapeout-join) form to join! Our DeCal listing from Fall '24 is [https://decal.studentorg.berkeley.edu/courses/7769](https://decal.studentorg.berkeley.edu/courses/7769). More information about enrollment will be sent to those who fill out the enrollment form.
+Fill out [THIS](http://berkie.ee/bhjq05) form to join! Our DeCal listing from Spring '25 is [https://decal.studentorg.berkeley.edu/courses/7769](https://decal.studentorg.berkeley.edu/courses/7769). More information about enrollment will be sent to those who fill out the enrollment form.
 
 
 ### Prerequisites
