@@ -77,7 +77,7 @@ heading_links:
     url: "https://www.youtube.com/playlist?list=PLp8QV47qJEg4fg0UAZzU2FeuZrs6XMjkK"
 
 # - Used on staff.md to show students the staff email.
-staff_email: "evanbot@berkeley.edu"
+staff_email: "151tapeout@ieee.berkeley.edu"
 
 # - Use this to show/hide the "announcements" feature on the homepage.
 # - Add your weekly announcements in the _announcements folder.

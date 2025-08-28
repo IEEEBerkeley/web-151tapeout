@@ -29,8 +29,9 @@ hide_right_toc: true
     {%- endif -%}
 </span>
 {% endif -%}
+
 {%- if site.heading_links.size != 0 -%}
-<span style="white-space: nowrap;">
+<!-- <span style="white-space: nowrap;">
     [
     {%- for link in site.heading_links -%}
     {%- unless forloop.first -%}, {% endunless -%}
@@ -41,7 +42,7 @@ hide_right_toc: true
     {%- endif -%}
     {%- endfor -%}
     ]
-</span>
+</span> -->
 {% endif -%}
 
 {%- if site.enable_announcements -%}

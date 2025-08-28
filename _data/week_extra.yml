@@ -29,14 +29,14 @@
 # This is not recommended, because the "Week" column isn't really meant for long text.
 
 week_extra:
-  - name: ""
-    link: ""
-  - name: "Survey"
-    link: "https://forms.gle/FFTFQmv2UJqooukH7"
-  - name: ""
-    link: ""
-  - name: "Survey"
-    link: "https://forms.gle/LeAN3ud6sejxEy5z7"
-    hide_extra: true
-  - name: "Survey"
-    link: "https://forms.gle/vMq7Qu8RGPQ2pDwj8"
+  # - name: ""
+  #   link: ""
+  # - name: "Survey"
+  #   link: "https://forms.gle/FFTFQmv2UJqooukH7"
+  # - name: ""
+  #   link: ""
+  # - name: "Survey"
+  #   link: "https://forms.gle/LeAN3ud6sejxEy5z7"
+  #   hide_extra: true
+  # - name: "Survey"
+  #   link: "https://forms.gle/vMq7Qu8RGPQ2pDwj8"

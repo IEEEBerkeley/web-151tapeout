@@ -77,10 +77,10 @@
 # - You should not need to change these unless you're rebuilding the website.
 # - If your lecture slides are Google Slides links, ignore this.
 # - If your lecture slides are PDFs in this repo, update this.
-lecture_prefix: "/assets/lectures/cs101-sp25-lec"
+# lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 # - If your readings are PDFs in the repo, update this and readings.html.
 # - If your readings are external links, then ignore this.
-readings_prefix: "/assets/notes/cs101-sp25-note"
+# readings_prefix: "/assets/notes/cs101-sp25-note"
 
 lectures:
   - title: "Sign up for the Decal! To avoid dead links, see the forms above. We start a week later than standard classes."
