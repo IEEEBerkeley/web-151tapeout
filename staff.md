@@ -72,7 +72,7 @@ If you have a non-course related question, you can view staff emails by pressing
 {% endif %}
 
 {% if extra_instructors or instructors %}
-## Instructors
+<!-- ## Instructors -->
 
 <div class="role">
   {% for staffer in extra_instructors %}
@@ -87,7 +87,7 @@ If you have a non-course related question, you can view staff emails by pressing
 
 
 {% if extra_head_teaching_assistants or head_teaching_assistants %}
-## Head TAs
+<!-- ## Head TAs -->
 
 <div class="role">
   {% for staffer in extra_head_teaching_assistants %}
@@ -101,7 +101,7 @@ If you have a non-course related question, you can view staff emails by pressing
 {% endif %}
 
 {% if extra_teaching_assistants or teaching_assistants %}
-## TAs
+<!-- ## TAs -->
 
 <div class="role">
   {% for staffer in extra_teaching_assistants %}
@@ -115,7 +115,7 @@ If you have a non-course related question, you can view staff emails by pressing
 {% endif %}
 
 {% if extra_tutors or tutors %}
-## Tutors
+<!-- ## Tutors -->
 
 <div class="role">
   {% for staffer in extra_tutors %}
@@ -129,7 +129,7 @@ If you have a non-course related question, you can view staff emails by pressing
 {% endif %}
 
 {% if extra_readers or readers %}
-## Readers
+<!-- ## Readers -->
 
 <div class="role">
   {% for staffer in extra_readers %}
