@@ -95,7 +95,7 @@ labs:
   # rowspan: 4
   - title: "Lab 4"
     link: "https://github.com/ucb-eecs151tapeout/eecs151t-labs/"
-    due: "TODO" 
+    due: "11/14" 
     parts:
       - name: "Practical experience verifying OFO Tile and side project."
   - nonumber: true
