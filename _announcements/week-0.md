@@ -1,10 +1,9 @@
 ---
 layout: announcement
-title: Week 0 Announcements
-week: 0
-date: 2025-08-22
+title: Week 1 Announcements
+week: 1
+date: 2025-09-12
 ---
 
-- **Enroll** for Fall 2025 [here](http://berkie.ee/bhjq05)!
-- The first lecture is on Friday, September 12.
-- Please get your pancake orders submitted before breakfast.
+- Lab 0, 1A, and 1B are released and due September 26. 
+- Please check Discord for more announcements!

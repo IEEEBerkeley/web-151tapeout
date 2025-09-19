@@ -99,7 +99,7 @@ lectures:
     #   - name: "x86/GDB Cheat Sheet"
     #     link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
   - title: "Introduction to SoCs and their Parts + Chipyard. Introduction to SoCs and their various parts using Berkeley’s Rocket Chip - an SoC generator."
-    # slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
+    slides: "https://docs.google.com/presentation/d/1SOlAH2HoIVpsjZ_xQiNklMKtm7cAWAPUDBGVbMAmh1Q/edit?usp=sharing"
     # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
     # readings:
     #   - name: "Ch. 3"
