@@ -107,7 +107,7 @@ lectures:
   # - title: "Holiday (No Lecture)"
     # nonumber: true # skips assigning a number to this box
   - title: "SoC Interconnects, Protocols, and More Chipyard. Figure out how SoC parts are interconnected and what that looks like in Chipyard (TileLink, Configs..)."
-    # slides: "https://docs.google.com/presentation/d/140pgaTQT-7HgqP9Y7NLHXIlFeJHNInLauVaqFn455yI"
+    slides: "https://docs.google.com/presentation/d/10p2sQzC3XZAqg7wOSVbDPDusPO44bv5I3SCs60CjRlY/edit?usp=sharing"
     # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX-g5R_j2HkJBohgyIkppSCl"
     # readings:
     #   - name: "Ch. 3"
