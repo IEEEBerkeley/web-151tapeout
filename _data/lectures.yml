@@ -130,8 +130,8 @@ lectures:
     #     link: "https://textbook.cs161.org/memory-safety/mitigations.html"
   - title: "SoC Verification"
     # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
-    # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
-    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    slides: "https://docs.google.com/presentation/d/17e6SkFyS5phgIPNyzbEwHvAWDMHBfi6o"
+	# recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
     # readings:
     #   - name: "Ch. 5"
     #     link: "https://textbook.cs161.org/crypto/intro.html"
