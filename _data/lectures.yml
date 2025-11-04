@@ -114,7 +114,7 @@ lectures:
     #     link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
     # extra: "[Sample extra link](https://google.com)"
   - title: "SoC Peripherals"
-  	slides: "https://docs.google.com/presentation/d/1roZ63lv0KeLV7Jf_4vZ-UKwCxLSdVIGA"
+    slides: "https://docs.google.com/presentation/d/1roZ63lv0KeLV7Jf_4vZ-UKwCxLSdVIGA"
     # nonumber: true # skips assigning a number to this box
   - title: "Work Session"
   - title: "Midterm Student Presentations. Make sure we’re _all_ on the same page regarding who’s aiming to do what before RTL Freeze."
@@ -131,7 +131,7 @@ lectures:
   - title: "SoC Verification"
     # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
     slides: "https://docs.google.com/presentation/d/17e6SkFyS5phgIPNyzbEwHvAWDMHBfi6o"
-	# recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
     # readings:
     #   - name: "Ch. 5"
     #     link: "https://textbook.cs161.org/crypto/intro.html"
