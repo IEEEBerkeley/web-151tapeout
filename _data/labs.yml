@@ -101,7 +101,7 @@ labs:
   - nonumber: true
   - title: "Lab 5"
     link: "https://github.com/ucb-eecs151tapeout/eecs151t-labs/"
-    due: "on tapeout deadline (prioritize tapeout if you're working on it) " 
+    due: "12/05" 
     parts:
       - name: "Practical experience running PD. Preliminary numbers for projects."
   - nonumber: true

@@ -112,7 +112,7 @@ projects:
   - nonumber: true
   - title: "Initial Physical Design"
   - nonumber: true
-  - title: "Tapeout Deadline!!!"
+  - nonumber: true
   - title: "Document what you've done! Final feedback form."
   - title: "Fill out staff interest form!"
   - nonumber: true # blank box in Week 5

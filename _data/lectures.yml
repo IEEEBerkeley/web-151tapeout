@@ -155,16 +155,16 @@ lectures:
     # readings:
     #   - name: "Ch. 5"
     #     link: "https://textbook.cs161.org/crypto/intro.html"
-  - title: "Tapeout Deadline!!!!!"
+  - title: "Thanksgiving Break - No Meet"
     # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
     # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
     # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
     # readings:
     #   - name: "Ch. 5"
     #     link: "https://textbook.cs161.org/crypto/intro.html"
-    classes:
-      - schedule-red
-  - title: "Thanksgiving Break - No Meet"
+    # classes:
+    #   - schedule-red
+  - title: "Guest Lecture - more info to come!"
     # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
     # slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
     # recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
