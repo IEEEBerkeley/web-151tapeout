@@ -119,7 +119,7 @@ lectures:
     # nonumber: true # skips assigning a number to this box
   - title: "Work Session"
   - title: "Midterm Student Presentations. Make sure we’re _all_ on the same page regarding who’s aiming to do what before RTL Freeze."
-    # slides: "https://docs.google.com/presentation/d/1gYzYu-T0ymaVcH87-mlCPc7qnRmWacHpKebCentDjoM"
+    slides: "https://docs.google.com/presentation/d/1hCmS6oBsMUvyfjgLSKft0X5WMsaZRuz8pgxGf_DN3qk/edit?usp=drive_link"
     recording: "https://drive.google.com/file/d/1sK7kqSW4KPnSCXev0JYZ6WRFS50Z0TMy/view?usp=drive_link"
     classes:
       - schedule-red
